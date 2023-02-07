@@ -73,7 +73,6 @@ export default function CountryInfo(props) {
     fetchCountry();
     consoleLogCountryInfo();
   }, [countryCode]);
-
   return (
     <div id='country-info'>
       <div id='language-container'>
