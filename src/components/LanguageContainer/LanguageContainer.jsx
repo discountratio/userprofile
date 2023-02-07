@@ -1,10 +1,30 @@
 import React, { useState, useEffect } from "react";
 
+import "./LanguageContainer.scss";
+
 export default function LanguageContainer(props) {
   const language = props.language;
   const [languageLevel, setLanguageLevel] = useState(50);
   const [languageCheckbox, setLanguageCheckbox] = useState(false);
 
+  //Use Effects
+  //change checkbox value
+  useEffect(() => {
+    console.log(languageCheckbox);
+  }, [languageCheckbox]);
+
+  //change range value
+  useEffect(() => {
+    console.log(languageLevel);
+  }, [languageLevel]);
+
+  //reset on new language
+  useEffect(() => {
+    setLanguageCheckbox(false);
+    setLanguageLevel(50);
+  }, [language]);
+
+  //Handlers
   const handleLanguageCheckbox = (e) => {
     setLanguageCheckbox(e.target.checked);
   };
@@ -13,29 +33,14 @@ export default function LanguageContainer(props) {
     setLanguageLevel(e.target.value);
   };
 
-  useEffect(() => {
-    console.log(languageCheckbox);
-  }, [languageCheckbox]);
-
-  useEffect(() => {
-    console.log(languageLevel);
-  }, [languageLevel]);
-
-  useEffect(() => {
-    setLanguageCheckbox(false);
-    setLanguageLevel(50);
-  }, [language]);
-
+  //Adds language and level to local storage, if language already exists, it updates the leves
   const handleAddButton = (e) => {
     e.preventDefault();
+
+    //get array from local storage
     const temp = window.localStorage.getItem("languageArray");
-    const languageArray = temp ? JSON.parse(temp) : [];
 
-    const languageObject = {
-      language: language,
-      level: languageLevel,
-    };
-
+    //if array doesn't exist, create it
     if (!temp) {
       window.localStorage.setItem(
         "languageArray",
@@ -43,6 +48,16 @@ export default function LanguageContainer(props) {
       );
     }
 
+    //parse array from local storage
+    const languageArray = temp ? JSON.parse(temp) : [];
+
+    //create language object
+    const languageObject = {
+      language: language,
+      level: languageLevel,
+    };
+
+    //check if language already exists in array, if it does, update level
     for (let lang in languageArray) {
       console.log("lang: ", lang);
       if (languageObject.language === languageArray[lang].language) {
@@ -57,31 +72,38 @@ export default function LanguageContainer(props) {
   };
 
   return (
-    <div>
-      <label htmlFor={`${language}-checkbox`}>{language}</label>
-      <input
-        type='checkbox'
-        name='language-checkbox'
-        id={`${language}-checkbox`}
-        checked={languageCheckbox}
-        onChange={handleLanguageCheckbox}
-      />
+    <div className='language-input-container'>
+      <label className='language-title'>
+      {language}
+
+        <input
+          type='checkbox'
+          name='language-checkbox'
+          className='language-checkbox'
+          checked={languageCheckbox}
+          onChange={handleLanguageCheckbox}
+        />
+      </label>
+
 
       {languageCheckbox ? (
-        <label htmlFor='language-range'>
+        <>
+        <label>
+          Skill Level: 
           <input
             type='range'
             name='language-range'
-            id={`${language}-range`}
+            className='language-range'
             onChange={handleLanguageRange}
           />
-          <span>{languageLevel}%</span>
+          <span className='language-range-text'>{languageLevel}%</span>
         </label>
+
+<button onClick={handleAddButton}>Add Language</button>
+</>
       ) : null}
 
-      {languageCheckbox ? (
-        <button onClick={handleAddButton}>Add Language</button>
-      ) : null}
+    
     </div>
   );
 }

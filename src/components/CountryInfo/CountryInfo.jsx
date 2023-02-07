@@ -4,7 +4,7 @@ import countryCodes from "../../assets/data/country-codes";
 import LanguageContainer from "../LanguageContainer/LanguageContainer";
 import "./CountryInfo.scss";
 /*
-Takes in the countryCode prop and renders the infortmation from the fetch response
+Takes in the countryCode prop and renders the infortmation from the fetch responses
 */
 export default function CountryInfo(props) {
   const countryCode = props.countryCode;
@@ -74,9 +74,9 @@ export default function CountryInfo(props) {
     consoleLogCountryInfo();
   }, [countryCode]);
   return (
-    <div id='country-info'>
-      <div id='language-container'>
-        <div id='country-languages'>
+    <div className='country-info'>
+      <div className='language-container'>
+        <div className='country-languages'>
           <h2>Languages</h2>
           {countryLanguages.map((language) => {
             return <LanguageContainer language={language} />;
@@ -84,25 +84,25 @@ export default function CountryInfo(props) {
         </div>
       </div>
 
-      <div id='country-info-container'>
-        <div id='country-info-text'>
-          <div id='country-name'>
+      <div className='country-info-container'>
+        <div className='country-info-text'>
+          <div className='country-name'>
             <h2>{countryName}</h2>
           </div>
 
-          <div id='country-capital'>
+          <div className='country-capital'>
             <p>
               <strong> Capital:</strong> <span>{countryCapital}</span>
             </p>
           </div>
 
-          <div id='country-population'>
+          <div className='country-population'>
             <p>
               <strong>Population:</strong> <span>{countryPopulation}</span>
             </p>
           </div>
 
-          <div id='country-region'>
+          <div className='country-region'>
             <p>
               <strong>Region:</strong> <span>{countryRegion}</span>
             </p>
@@ -110,13 +110,13 @@ export default function CountryInfo(props) {
 
         </div>
 
-        <div id='country-flag'>
-          <img src={countryFlag} alt={countryName} />
+        <div className='country-flag-container'>
+          <img className='country-flag' src={countryFlag} alt={countryName} />
         </div>
 
       </div>
           
-      {/* <div id='country-borders'>
+      {/* <div className='country-borders'>
         <h2>Borders</h2>
         {!countryBorders ? (
           <p>None</p>

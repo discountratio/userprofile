@@ -1,6 +1,6 @@
 import { useState, useForm } from 'react'
 import reactLogo from './assets/react.svg'
-import './App.css'
+import './App.scss'
 import InputForm from './components/InputForm/InputForm'
 import UserInformation from './components/UserInformation/UserInformation'
 function App() {

@@ -1,0 +1,36 @@
+.language-input-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 0.5vw;
+  padding: 0 1rem;
+    height: 40px;
+
+.language-title{
+    display: flex;
+    margin: 0 1rem;
+    font-size: 1.5rem;
+
+    input.language-checkbox {
+      margin: 0.2rem 0.5rem;
+      width: 2rem;
+    }
+}
+
+  .language-range-text {
+    display: inline-block;
+    width: 3rem;
+    text-align: center;
+  }
+
+  .language-range{
+    margin: 0 1rem;
+  }
+
+
+  button {
+    padding: 0.2rem 0.5rem;
+
+    background: lightgreen;
+  }
+}
