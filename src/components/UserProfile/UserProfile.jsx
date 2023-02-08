@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect, useRef } from "react";
-import { Heading, Link, Text, Flex, Box } from "@chakra-ui/react";
+import { Heading, Link, Text, Flex, Box, Image } from "@chakra-ui/react";
 import UserLanguages from "./UserLanguages/UserLanguages";
 
 export default function UserInformation(props) {
@@ -14,16 +14,23 @@ export default function UserInformation(props) {
       // justifyContent='center'
       flexDirection='column'
       className='user-information'>
-      <Heading as='h2' size='2x1' mb='2'>
+      <Heading
+        as='h1'
+        size='4x2'
+        mb='2'
+        w='100%'
+        backgroundColor='red.100'
+        textAlign='center'>
         User Information
       </Heading>
 
-      <img
+      <Image
+        borderRadius=''
         src='/src/assets/images/user.jpg'
         alt='user headshot'
         style={{ maxWidth: 440 }}
       />
-      <Text fontSize='xl'>UserFirstName UserLastName</Text>
+      <Text fontSize='xl' casing='capitalize'>UserFirstName UserLastName</Text>
       <Text fontSize='l' m='2'>
         UserDescription Lorem ipsum dolor sit amet consectetur adipisicing elit.
         Ducimus facere nesciunt quod eaque qui dolorum debitis illum quis atque

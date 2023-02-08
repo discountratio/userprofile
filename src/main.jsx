@@ -2,32 +2,25 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App'
 import './index.css'
-import { ChakraProvider, extendTheme, ThemeProvider } from '@chakra-ui/react'
+import { ChakraProvider, extendTheme, theme, ThemeProvider, withDefaultColorScheme} from '@chakra-ui/react'
 
-const theme = extendTheme({
-  styles: {
-    global: {
-      body: {
-        bg: 'gray.100',
-        color: 'gray.800',
-
-      },
-    },
-
-    // styles for the `a`
-    a: {
-      color: 'teal.500',
-      _hover: {
-        textDecoration: 'underline',
-      },
-    }
-  }
-})
+const customTheme = extendTheme(
+  withDefaultColorScheme({
+    colorScheme: 'red',
+    components: ['Button', 'Badge'],
+  }),
+  withDefaultColorScheme({
+    colorScheme: 'blue',
+    components: ['Alert', 'Table'],
+  }),
+)
         
+
+
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <ChakraProvider theme={theme}>
+    <ChakraProvider theme={customTheme}>
     <App />
     </ChakraProvider>
   </React.StrictMode>,

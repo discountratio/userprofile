@@ -1,6 +1,6 @@
 import React from "react";
 import countries from '../country-codes2'
-
+import {Select} from '@chakra-ui/react'
 export default function CountrySelection(props) {
 
   const handleCountryChange = () => {
@@ -14,7 +14,7 @@ export default function CountrySelection(props) {
 
   return (
     <div>
-      <select name='country' id='country' onChange={handleCountryChange}>
+      <Select bg='teal.400' color='black'  name='country' id='country' onChange={handleCountryChange}>
         <option value=''>Select a country</option>
         {countries.map((country, index) => (
           <option key={index} value={countries.code3}>
@@ -22,7 +22,7 @@ export default function CountrySelection(props) {
           </option>
         ))}
 
-      </select>
+      </Select>
     </div>
   );
 }
