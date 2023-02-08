@@ -3,6 +3,8 @@ import { useState, useEffect, useRef } from "react";
 import LanguageContainer from "./LanguageContainer/LanguageContainer";
 import CountrySelection from "./CountrySelection/CountrySelection";
 import "./CountryInformation.scss";
+import { Heading, Link, Text, Flex, Box, Image } from "@chakra-ui/react";
+
 /*
 Takes in the countryCode prop and renders the infortmation from the fetch responses
 */
@@ -44,7 +46,6 @@ export default function CountryInformation(props) {
     }
     return null;
   }
-
 
   const consoleLogCountryData = () => {
     if (countryData) {
@@ -116,13 +117,13 @@ export default function CountryInformation(props) {
   }, [countryData]);
 
   return (
-    <div className='country-info'>
+    <Flex flexDirection='column' className='country-info'>
+      <Heading as='h2'>Country Information</Heading>
       <CountrySelection
         setCountryCode={setCountryCode}
         fetchCountryDataFromCode={fetchCountryDataFromCode}
         setCountryStates={setCountryStates}
       />
-      <h2>Country Information</h2>
       <div className='country-info__container'>
         <div
           className='country-info__container__flag'
@@ -143,7 +144,7 @@ export default function CountryInformation(props) {
               <img
                 src={countryCoatOfArms}
                 alt=''
-                style={{ height: 320, maxHeight: 320 }}></img>
+                style={{ minHeight:120, maxHeight: 320 }}></img>
             ) : (
               <p>Coat of Arms not available</p>
             )}
@@ -161,7 +162,14 @@ export default function CountryInformation(props) {
           <h3>Languages</h3>
           {countryLanguages
             ? countryLanguages.map((language, index) => {
-                return <LanguageContainer key={index} language={language} countryName={countryNameCommon} countryFlag={countryFlagSVG} />;
+                return (
+                  <LanguageContainer
+                    key={index}
+                    language={language}
+                    countryName={countryNameCommon}
+                    countryFlag={countryFlagSVG}
+                  />
+                );
               })
             : null}
         </div>
@@ -181,6 +189,6 @@ export default function CountryInformation(props) {
           <p>{countryPopulation}</p>
         </div>
       </div>
-    </div>
+    </Flex>
   );
 }

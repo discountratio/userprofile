@@ -1,4 +1,5 @@
 import React from "react";
+import { Heading, Link, Text, Flex, Box } from "@chakra-ui/react";
 
 /*
     skill-container
@@ -11,25 +12,45 @@ import React from "react";
 */
 
 export default function SkillBar(props) {
+  const language = props.language;
+  const level = props.level;
+  const country = props.country;
+  const flag = props.flag;
+
   return (
-    <div class='skill-container'>
-      <h3 class='skill-name'>{props.language}</h3>
+    <Box
+      m='4'
+      p='2'
+      border='2px solid black'
+      maxWidth='600px'
+      rounded='lg'
+      flexBasis={["100%", "30%"]}
+      className='skill-container'>
+      <Heading as='h3' size='md' className='skill-name'>
+        {language} - {country}
+      </Heading>
 
       <div className='skill-bar-container'>
-        <div
-          className='skill-bar'
-          style={{ width: props.level, height: "100%" }}>
-          <span className='skill-bar-text'>{props.level}</span>
+        <div className='skill-bar'>
+          <Text fontSize='xl' className='skill-bar-text'>
+            {level}%
+          </Text>
         </div>
+
 
         <div className='skill-flag-container'>
           <img
-            class='skill-flag'
-            src={props.flag}
-            alt={`flag of ${props.country}`}
+            className='skill-flag'
+            src={flag}
+            alt={`flag of ${country}`}
+            style={{
+              width: 200,
+              aspectRatio: 2 / 1,
+              objectFit: "contain",
+            }}
           />
         </div>
       </div>
-    </div>
+    </Box>
   );
 }

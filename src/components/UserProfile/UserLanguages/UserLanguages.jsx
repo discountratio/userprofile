@@ -1,30 +1,42 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import SkillBar from "../SkillBar/SkillBar";
+import { Heading, Link, Text, Flex, Box } from "@chakra-ui/react";
 
-export default function UserLanguages() {
-  const [showLanguages, setShowLanguages] = useState(false);
+export default function UserLanguages(props) {
+  const [languageData, setLanguageData] = useState([]);
 
-  function renderLanguages() {
-    const temp = window.localStorage.getItem("languageArray");
-    const languages = temp ? JSON.parse(temp) : [];
-    return languages.map((language) => {
-      console.log(language);
-      return <SkillBar language={language.language} level={language.level} />;
-    });
-  }
+  // setLanguageData(JSON.parse(window.localStorage.getItem("languageArray")));
+  // console.log(languageData);
 
-  //Adds language and level to local storage, if language already exists, it updates the leves
-  const handleShowButton = (e) => {
-    e.preventDefault();
-    setShowLanguages(true);
+  const renderLanguageData = () => {
+    if (languageData) {
+      return languageData.map((language, index) => (
+        <SkillBar
+          key={index}
+          language={language.language}
+          level={language.level}
+          country={language.country}
+          flag={language.flag}
+        />
+      ));
+    }
   };
 
-  return (
-    <div id='user-languages'>
-      <h2>User Languages</h2>
-      {showLanguages ? renderLanguages() : null}
+  useEffect(() => {
+    setLanguageData(JSON.parse(window.localStorage.getItem("languageArray")));
+  }, []);
 
-      <button onClick={handleShowButton}>Show Languages</button>
-    </div>
+  // useEffect(() => {
+  //   setLanguageData(window.localStorage.getItem("languageArray"));
+  // }, []);
+
+  return (
+    <Flex
+      flexWrap='wrap'
+      alignItems='center'
+      justifyContent='center'
+      id='user-languages'>
+      {renderLanguageData()}
+    </Flex>
   );
 }
