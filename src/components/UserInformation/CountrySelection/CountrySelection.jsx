@@ -1,6 +1,6 @@
 import React from "react";
 
-import countryData from "../../assets/data/country-codes";
+import countryData from "../../../assets/data/country-codes";
 
 export default function CountrySelection(props) {
   const handleCountryChange = (e) => {

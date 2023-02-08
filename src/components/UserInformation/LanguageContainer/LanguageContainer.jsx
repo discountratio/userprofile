@@ -6,6 +6,8 @@ export default function LanguageContainer(props) {
   const language = props.language;
   const [languageLevel, setLanguageLevel] = useState(50);
   const [languageCheckbox, setLanguageCheckbox] = useState(false);
+  const [languageCountry, setLanguageCountry] = useState("");
+  const [languageFlag, setLanguageFlag] = useState("");
 
   //Use Effects
   //change checkbox value
@@ -18,10 +20,23 @@ export default function LanguageContainer(props) {
     console.log(languageLevel);
   }, [languageLevel]);
 
+  //change country value
+  useEffect(() => {
+    console.log(languageCountry);
+  }, [languageCountry]);
+
+  //change flag value
+  useEffect(() => {
+    console.log(languageFlag);
+  }, [languageFlag]);
+
+
   //reset on new language
   useEffect(() => {
     setLanguageCheckbox(false);
     setLanguageLevel(50);
+    setLanguageCountry("");
+    setLanguageFlag("");
   }, [language]);
 
   //Handlers
@@ -33,48 +48,55 @@ export default function LanguageContainer(props) {
     setLanguageLevel(e.target.value);
   };
 
+  const handleLanguageCountry = (e) => {
+    setLanguageCountry(e.target.value);
+  };
+
+  const handleLanguageFlag = (e) => {
+    setLanguageFlag(e.target.value);
+  };
+
+
   //Adds language and level to local storage, if language already exists, it updates the leves
   const handleAddButton = (e) => {
     e.preventDefault();
 
-    //get array from local storage
+    //get language array from local storage
     const temp = window.localStorage.getItem("languageArray");
-
-    //if array doesn't exist, create it
-    if (!temp) {
-      window.localStorage.setItem(
-        "languageArray",
-        JSON.stringify(languageArray)
-      );
-    }
-
-    //parse array from local storage
     const languageArray = temp ? JSON.parse(temp) : [];
 
     //create language object
     const languageObject = {
       language: language,
       level: languageLevel,
+      country: languageCountry,
+      flag: languageFlag,
+      
     };
 
+    
+
     //check if language already exists in array, if it does, update level
-    for (let lang in languageArray) {
-      console.log("lang: ", lang);
-      if (languageObject.language === languageArray[lang].language) {
-        languageArray[lang].level = languageObject.level;
-        window.localStorage.setItem(
-          "languageArray",
-          JSON.stringify(languageArray)
-        );
-        return;
-      }
+    const languageIndex = languageArray.findIndex(
+      (language) => language.language === languageObject.language
+    );
+
+    if (languageIndex !== -1) {
+      languageArray[languageIndex].level = languageObject.level;
+    } else {
+      languageArray.push(languageObject);
     }
+
+    //set language array in local storage
+    window.localStorage.setItem("languageArray", JSON.stringify(languageArray));
+    
   };
+
 
   return (
     <div className='language-input-container'>
       <label className='language-title'>
-      {language}
+        {language}
 
         <input
           type='checkbox'
@@ -85,25 +107,22 @@ export default function LanguageContainer(props) {
         />
       </label>
 
-
       {languageCheckbox ? (
         <>
-        <label>
-          Skill Level: 
-          <input
-            type='range'
-            name='language-range'
-            className='language-range'
-            onChange={handleLanguageRange}
-          />
-          <span className='language-range-text'>{languageLevel}%</span>
-        </label>
+          <label>
+            Skill Level:
+            <input
+              type='range'
+              name='language-range'
+              className='language-range'
+              onChange={handleLanguageRange}
+            />
+            <span className='language-range-text'>{languageLevel}%</span>
+          </label>
 
-<button onClick={handleAddButton}>Add Language</button>
-</>
+          <button onClick={handleAddButton}>Add Language</button>
+        </>
       ) : null}
-
-    
     </div>
   );
 }

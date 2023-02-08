@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import countryCodes from "../../assets/data/country-codes";
+import countryCodes from "../../../assets/data/country-codes";
 import LanguageContainer from "../LanguageContainer/LanguageContainer";
 import "./CountryInfo.scss";
 /*
@@ -78,8 +78,8 @@ export default function CountryInfo(props) {
       <div className='language-container'>
         <div className='country-languages'>
           <h2>Languages</h2>
-          {countryLanguages.map((language) => {
-            return <LanguageContainer language={language} />;
+          {countryLanguages.map((language, key) => {
+            return <LanguageContainer language={language} key={key} />;
           })}
         </div>
       </div>
