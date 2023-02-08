@@ -9,12 +9,7 @@ export default function UserLanguages() {
     const languages = temp ? JSON.parse(temp) : [];
     return languages.map((language) => {
       console.log(language);
-      return (
-        <p>
-          <span>{language.language}</span>
-          <span>{language.level}</span>
-        </p>
-      );
+      return <SkillBar language={language.language} level={language.level} />;
     });
   }
 

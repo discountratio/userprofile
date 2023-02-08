@@ -30,7 +30,6 @@ export default function LanguageContainer(props) {
     console.log(languageFlag);
   }, [languageFlag]);
 
-
   //reset on new language
   useEffect(() => {
     setLanguageCheckbox(false);
@@ -56,7 +55,6 @@ export default function LanguageContainer(props) {
     setLanguageFlag(e.target.value);
   };
 
-
   //Adds language and level to local storage, if language already exists, it updates the leves
   const handleAddButton = (e) => {
     e.preventDefault();
@@ -71,10 +69,7 @@ export default function LanguageContainer(props) {
       level: languageLevel,
       country: languageCountry,
       flag: languageFlag,
-      
     };
-
-    
 
     //check if language already exists in array, if it does, update level
     const languageIndex = languageArray.findIndex(
@@ -89,9 +84,7 @@ export default function LanguageContainer(props) {
 
     //set language array in local storage
     window.localStorage.setItem("languageArray", JSON.stringify(languageArray));
-    
   };
-
 
   return (
     <div className='language-input-container'>
