@@ -4,6 +4,8 @@ import "./LanguageContainer.scss";
 
 export default function LanguageContainer(props) {
   const language = props.language;
+
+
   const [languageLevel, setLanguageLevel] = useState(50);
   const [languageCheckbox, setLanguageCheckbox] = useState(false);
   const [languageCountry, setLanguageCountry] = useState("");
@@ -62,13 +64,19 @@ export default function LanguageContainer(props) {
     //get language array from local storage
     const temp = window.localStorage.getItem("languageArray");
     const languageArray = temp ? JSON.parse(temp) : [];
+    const country = props.countryName;
+    const flag = props.countryFlag;
+
+    console.log('************************')
+    console.log(props.countryName)
+    console.log(props.countryflag)
 
     //create language object
     const languageObject = {
       language: language,
       level: languageLevel,
-      country: languageCountry,
-      flag: languageFlag,
+      country: country,
+      flag: flag,
     };
 
     //check if language already exists in array, if it does, update level
@@ -78,6 +86,7 @@ export default function LanguageContainer(props) {
 
     if (languageIndex !== -1) {
       languageArray[languageIndex].level = languageObject.level;
+
     } else {
       languageArray.push(languageObject);
     }
@@ -85,6 +94,7 @@ export default function LanguageContainer(props) {
     //set language array in local storage
     window.localStorage.setItem("languageArray", JSON.stringify(languageArray));
   };
+
 
   return (
     <div className='language-input-container'>

@@ -1,12 +1,12 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import LanguageContainer from "./LanguageContainer/LanguageContainer";
 import CountrySelection from "./CountrySelection/CountrySelection";
 import "./CountryInformation.scss";
 /*
 Takes in the countryCode prop and renders the infortmation from the fetch responses
 */
-export default function CountryInfo(props) {
+export default function CountryInformation(props) {
   const countryCode = props.countryCode;
   const setCountryCode = props.setCountryCode;
 
@@ -33,17 +33,23 @@ export default function CountryInfo(props) {
 
   //convert object to array
   function objectEntriesToArray(object) {
-    const array = [];
-    for (const [key, value] of Object.entries(object)) {
-      array.push(value);
-      // console.log(`${key}: ${value}`);
+    if (object) {
+      const array = [];
+      for (const [key, value] of Object.entries(object)) {
+        array.push(value);
+        // console.log(`${key}: ${value}`);
+      }
+      // console.log(array);
+      return array;
     }
-    // console.log(array);
-    return array;
+    return null;
   }
 
+  console.log(countryData);
+
   const consoleLogCountryData = () => {
-    console.log(`
+    if (countryData) {
+      console.log(`
    ___________________Country Data____________________
    |Input Code:  ${countryCode}
    |ResponseCode:${countryData.cca2}
@@ -60,20 +66,27 @@ export default function CountryInfo(props) {
    |FlagAlt:     ${countryData.flags.alt}
    _________________________________________________
     `);
+    }
   };
 
   const setCountryStates = () => {
-    setCountryLanguages(objectEntriesToArray(countryData.languages));
-    setCountryNameOffical(countryData.name.official);
-    setCountryNameCommon(countryData.name.common);
-    setCountryCapital(countryData.capital);
-    setCountryPopulation(countryData.population);
-    setCountryRegion(countryData.region);
-    setCountrySubregion(countryData.subregion);
-    setCountryFlagIcon(countryData.flag);
-    setCountryFlagSVG(countryData.flags.svg);
-    setCountryFlagAlt(countryData.flags.alt);
-    setCountryCoatOfArms(countryData.coatOfArms.svg);
+    if (countryData) {
+      setCountryLanguages(objectEntriesToArray(countryData.languages));
+      setCountryNameOffical(countryData.name.official);
+      setCountryNameCommon(countryData.name.common);
+      setCountryCapital(countryData.capital);
+      setCountryPopulation(countryData.population);
+      setCountryRegion(countryData.region);
+      setCountrySubregion(countryData.subregion);
+      setCountryFlagIcon(countryData.flag);
+      setCountryFlagSVG(countryData.flags.svg);
+      setCountryFlagAlt(countryData.flags.alt);
+      setCountryCoatOfArms(countryData.coatOfArms.svg);
+    }
+  };
+
+  const saveCountryDataToLocalStorage = () => {
+    window.localStorage.setItem("countryData", JSON.stringify(countryData));
   };
 
   const fetchCountryDataFromCode = async () => {
@@ -82,21 +95,34 @@ export default function CountryInfo(props) {
     const data = await response.json();
     const country = JSON.parse(JSON.stringify(data[0]));
     setCountryData(country);
-    console.log(countryData);
-    window.localStorage.setItem("countryData", JSON.stringify(countryData));
+    saveCountryDataToLocalStorage();
     return country;
   };
 
-  //useEffect to fetch country data and console log the country states everytime the countryCode changes
   useEffect(() => {
-    fetchCountryDataFromCode();
-    setCountryStates();
-    consoleLogCountryData();
+    if (countryCode) {
+      fetchCountryDataFromCode();
+    }
   }, [countryCode]);
+
+  useEffect(() => {
+    if (countryData) {
+      setCountryStates();
+      saveCountryDataToLocalStorage();
+    }
+  }, [countryData]);
+
+  useEffect(() => {
+    consoleLogCountryData();
+  }, [countryData]);
 
   return (
     <div className='country-info'>
-      <CountrySelection setCountryCode={setCountryCode} />
+      <CountrySelection
+        setCountryCode={setCountryCode}
+        fetchCountryDataFromCode={fetchCountryDataFromCode}
+        setCountryStates={setCountryStates}
+      />
       <h2>Country Information</h2>
       <div className='country-info__container'>
         <div
@@ -105,13 +131,20 @@ export default function CountryInfo(props) {
           {/* <h3>Flag</h3> */}
           <img
             src={countryFlagSVG}
-            alt={countryFlagAlt}
-            style={{ width: 600 }}
+            alt={
+              countryFlagAlt
+                ? countryFlagIcon + countryFlagAlt
+                : countryNameCommon + countryFlagIcon
+            }
+            style={{ maxHeight: 330 }}
           />
           <div className='country-info__container__info__coat-of-arms'>
             {/* <h3>Coat of Arms</h3> */}
             {countryCoatOfArms ? (
-              <img src={countryCoatOfArms} alt='' style={{ height: 320 }}></img>
+              <img
+                src={countryCoatOfArms}
+                alt=''
+                style={{ height: 320, maxHeight: 320 }}></img>
             ) : (
               <p>Coat of Arms not available</p>
             )}
@@ -127,7 +160,11 @@ export default function CountryInfo(props) {
 
         <div className='country-info__container__info__languages'>
           <h3>Languages</h3>
-          <LanguageContainer languages={countryLanguages} />
+          {countryLanguages
+            ? countryLanguages.map((language, index) => {
+                return <LanguageContainer key={index} language={language} countryName={countryNameCommon} countryFlag={countryFlagSVG} />;
+              })
+            : null}
         </div>
 
         <div className='country-info__container__info__capital'>

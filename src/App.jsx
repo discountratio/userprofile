@@ -4,8 +4,8 @@ import UserInformation from "./components/UserProfile/UserProfile";
 import CountryInformation from "./components/CountryInformation/CountryInformation";
 
 function App() {
-  const [userData, setUserData] = useState({});
-  const [countryData, setCountryData] = useState({});
+  const [userData, setUserData] = useState('');
+  const [countryData, setCountryData] = useState('');
   const [countryCode, setCountryCode] = useState("");
   const userLoading = () => {
     if (!userData) {
