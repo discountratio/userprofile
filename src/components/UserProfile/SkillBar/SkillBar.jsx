@@ -25,6 +25,22 @@ export default function SkillBar(props) {
       maxWidth='600px'
       rounded='lg'
       flexBasis={["100%", "30%"]}
+      boxShadow='8px 8px black'
+      bg='gray.100'
+      color='gray.800'
+      position='relative'
+      top='0'
+      left='0'
+      
+        _hover={{
+        bg: "gray.200",
+        color: "gray.900",
+        top: "4px",
+        left: "4px",
+        boxShadow: "2px 2px black",
+        transition: "all 0.2s ease-in-out",
+    
+        }}
       className='skill-container'>
       <Heading as='h3' size='md' className='skill-name'>
         {language} - {country}
