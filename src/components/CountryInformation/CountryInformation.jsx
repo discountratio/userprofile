@@ -45,7 +45,6 @@ export default function CountryInformation(props) {
     return null;
   }
 
-  console.log(countryData);
 
   const consoleLogCountryData = () => {
     if (countryData) {

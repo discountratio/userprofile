@@ -3,9 +3,8 @@ import countries from '../country-codes2'
 
 export default function CountrySelection(props) {
 
-  const handleCountryChange = (e) => {
+  const handleCountryChange = () => {
     const selectionValue = document.getElementById("country").value;
-    console.log('clickkkk')
     props.setCountryCode(selectionValue);
     props.fetchCountryDataFromCode();
     props.setCountryStates();

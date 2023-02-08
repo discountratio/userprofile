@@ -11,26 +11,7 @@ export default function LanguageContainer(props) {
   const [languageCountry, setLanguageCountry] = useState("");
   const [languageFlag, setLanguageFlag] = useState("");
 
-  //Use Effects
-  //change checkbox value
-  useEffect(() => {
-    console.log(languageCheckbox);
-  }, [languageCheckbox]);
-
-  //change range value
-  useEffect(() => {
-    console.log(languageLevel);
-  }, [languageLevel]);
-
-  //change country value
-  useEffect(() => {
-    console.log(languageCountry);
-  }, [languageCountry]);
-
-  //change flag value
-  useEffect(() => {
-    console.log(languageFlag);
-  }, [languageFlag]);
+  
 
   //reset on new language
   useEffect(() => {
@@ -67,9 +48,7 @@ export default function LanguageContainer(props) {
     const country = props.countryName;
     const flag = props.countryFlag;
 
-    console.log('************************')
-    console.log(props.countryName)
-    console.log(props.countryflag)
+
 
     //create language object
     const languageObject = {
