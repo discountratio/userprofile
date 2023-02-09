@@ -118,48 +118,32 @@ export default function CountryInformation(props) {
 
   return (
     <Flex flexDirection='column' className='country-info'>
-      <Heading as='h2'>Country Information</Heading>
+      <Heading as='h2'>Add A Language</Heading>
       <CountrySelection
         setCountryCode={setCountryCode}
         fetchCountryDataFromCode={fetchCountryDataFromCode}
         setCountryStates={setCountryStates}
       />
       <div className='country-info__container'>
-        <div
-          className='country-info__container__flag'
-          style={{ display: "flex" }}>
-          {/* <h3>Flag</h3> */}
-          <img
-            src={countryFlagSVG}
-            alt={
-              countryFlagAlt
-                ? countryFlagIcon + countryFlagAlt
-                : countryNameCommon + countryFlagIcon
-            }
-            style={{ maxHeight: 330 }}
-          />
-          <div className='country-info__container__info__coat-of-arms'>
-            {/* <h3>Coat of Arms</h3> */}
-            {countryCoatOfArms ? (
-              <img
-                src={countryCoatOfArms}
-                alt=''
-                style={{ minHeight:120, maxHeight: 320 }}></img>
-            ) : (
-              <p>Coat of Arms not available</p>
-            )}
-          </div>
-        </div>
-
-        <div className='country-info__container__info'>
-          <div className='country-info__container__info__name'>
-            <h3>{countryNameOffical}</h3>
-            <h4>{countryNameCommon}</h4>
-          </div>
-        </div>
-
+        <Flex>
+          <Box>
+            <Image
+              src={countryFlagSVG ? countryFlagSVG : countryFlagIcon}
+              alt={
+                countryFlagAlt ? countryFlagAlt : `flag of ${countryNameCommon}`
+              }
+            />
+          </Box>
+          <Box>
+            <Image
+              src={countryCoatOfArms ? countryCoatOfArms : countryFlagIcon}
+              alt={
+                countryCoatOfArms ? `The ${countryNameCommon} Coat of Arms` : 'No coat of arms here.'
+              }
+            />
+          </Box>
+        </Flex>
         <div className='country-info__container__info__languages'>
-          <h3>Languages</h3>
           {countryLanguages
             ? countryLanguages.map((language, index) => {
                 return (
@@ -174,20 +158,26 @@ export default function CountryInformation(props) {
             : null}
         </div>
 
-        <div className='country-info__container__info__capital'>
-          <h3>Capital</h3>
-          <p>{countryCapital}</p>
-          <h4>Region & Sub-Region</h4>
-          <p>
-            {" "}
-            {countryRegion} & {countrySubregion}
-          </p>
-        </div>
+        <Text>
+          <strong>Official</strong>: {countryNameOffical}
+        </Text>
 
-        <div className='country-info__container__info__population'>
-          <h3>Population</h3>
-          <p>{countryPopulation}</p>
-        </div>
+        <Text>
+          <strong>Common</strong>: {countryNameCommon}
+        </Text>
+        <Text>
+          <strong>Capital</strong>: {countryCapital}
+        </Text>
+        <Text>
+          <strong>Region</strong>: {countryRegion}
+        </Text>
+        <Text>
+          <strong>Sub-Region</strong>: {countrySubregion}
+        </Text>
+
+        <Text>
+          <strong>Population</strong>: {countryPopulation}
+        </Text>
       </div>
     </Flex>
   );

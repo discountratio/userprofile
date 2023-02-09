@@ -27,7 +27,7 @@ function App() {
 
   return (
       <div className='App'>
-        <h2>Language Profile App</h2>
+        {/* <h2>Language Profile App</h2> */}
 
         <UserInformation
           userData={userData}
@@ -40,7 +40,7 @@ function App() {
           setCountryData={setCountryData}
           countryCode={countryCode}
           setCountryCode={setCountryCode}
-        />
+        /> 
       </div>
   );
 }

@@ -12,9 +12,7 @@ export default function UserLanguages(props) {
     if (languageData) {
       return languageData.map((language, index) => (
         <SkillBar
-          boxShadow='lg'
-          bg='gray.100'
-          color='gray.800'
+
           key={index}
           language={language.language}
           level={language.level}
@@ -35,7 +33,6 @@ export default function UserLanguages(props) {
       flexWrap='wrap'
       alignItems='center'
       justifyContent='center'
-      bg='gray.300'
       id='user-languages'>
       {renderLanguageData()}
     </Flex>

@@ -19,15 +19,29 @@ export default function SkillBar(props) {
 
   return (
     <Flex
-      m='4'
-      p='4'
-      flexDir={["column"]}
+      flexDirection='column'
       alignItems='center'
-      rounded='lg'
-      flexBasis={["100%", "30%"]}
-      bg='gray.200'
+      margin='4'
+      w='30'
       color='gray.800'
+      bg='gray.200'
+      border='2px'
+      borderColor='gray.200'
+      p='4'
       position='relative'
+      top='4px'
+      left='4px'
+      boxShadow='2px 2px 4px 0px #444'
+      transition='box-shadow 200ms ease-in-out, top 200ms ease-in-out, left 200ms ease-in-out'
+      
+    _hover={{
+      top:'-4px',
+      left:'-4px',
+      boxShadow: "12px 12px 8px 0px #444",
+    }}
+
+
+
       className='skill-container'>
       <Box className='skill-flag-container' boxShadow='lg' w='auto'>
         <img
