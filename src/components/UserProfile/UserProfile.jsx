@@ -99,7 +99,8 @@ export default function UserInformation(props) {
                 h='40px'
                 margin='auto'
                 _hover={{ bg: "blue.400", color: "white" }}>
-                <Link>Email</Link>
+                <Link href='discountratio@gmail.com' isExternal
+                 >Email</Link>
               </Button>
 
               <Button
@@ -114,7 +115,7 @@ export default function UserInformation(props) {
                 margin='auto'
                 _hover={{ bg: "blue.400", color: "white" }}>
                 <Link
-                  href='https://www.linkedin.com/in/firstly-lastnamed-123456789/'
+                  href='github.com/discountratio'
                   isExternal>
                   LinkedIn
                 </Link>
