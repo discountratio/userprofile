@@ -9,9 +9,19 @@ import {
   Image,
   Button,
   AspectRatio,
+  Icon,
 } from "@chakra-ui/react";
-import { AtSignIcon } from "@chakra-ui/icons";
+import { MdSettings } from "react-icons/md";
+import {
+  AddIcon,
+  AtSignIcon,
+  DeleteIcon,
+  InfoOutlineIcon,
+  PhoneIcon,
+  SunIcon,
+} from "@chakra-ui/icons";
 import UserLanguages from "./UserLanguages/UserLanguages";
+import { transform } from "framer-motion";
 
 export default function UserInformation(props) {
   const userLanguages = props.UserLanguages;
@@ -29,11 +39,9 @@ export default function UserInformation(props) {
         zIndex: "-1",
         content: '""',
         w: "full",
-        h:'240',
+        h: "240",
         bgGradient: "linear(to-r, blue.100, white 80%)",
-      }}
-      
-      >
+      }}>
       <Flex className='user-profile-ccontainer' flexDirection='column' p='4'>
         <Flex flexDirection='column' w='full' mt='14'>
           <Box
@@ -43,7 +51,7 @@ export default function UserInformation(props) {
             <Image
               className='user-image'
               borderRadius='full'
-              w={['40', '44', '48', '52']}
+              w={["40", "44", "48", "52"]}
               objectFit='cover'
               objectPosition={{ base: "top", md: "top" }}
               border='16px solid white'
@@ -54,7 +62,7 @@ export default function UserInformation(props) {
             <Image
               className='user-flag'
               position='absolute'
-              w={['14', '16', '18', '20']}
+              w={["14", "16", "18", "20"]}
               bottom='2'
               right='0'
               boxShadow='0px -0px 12px 2px #333'
@@ -75,8 +83,7 @@ export default function UserInformation(props) {
               className='user-name-location-container'
               flexDirection='column'
               w='100%'
-              minW='200px'
-              >
+              minW='200px'>
               <Text className='user-name' fontSize='xl' fontWeight='bold'>
                 Firstly Lastnamed
               </Text>
@@ -95,12 +102,13 @@ export default function UserInformation(props) {
                 borderColor='blue.200'
                 borderRadius='full'
                 fontWeight='semibold'
-                w={['120px', '140px', '160px', '180px']}
+                w={["120px", "140px", "160px", "180px"]}
                 h='40px'
                 margin='auto'
                 _hover={{ bg: "blue.400", color: "white" }}>
-                <Link href='discountratio@gmail.com' isExternal
-                 >Email</Link>
+                <a href='mailTo:discountratio@gmail.com' target='_blank'>
+                  Email
+                </a>
               </Button>
 
               <Button
@@ -110,14 +118,15 @@ export default function UserInformation(props) {
                 borderColor='blue.200'
                 borderRadius='full'
                 fontWeight='semibold'
-                w={['120px', '140px', '160px', '180px']}
+                w={["120px", "140px", "160px", "180px"]}
                 h='40px'
                 margin='auto'
                 _hover={{ bg: "blue.400", color: "white" }}>
                 <Link
-                  href='github.com/discountratio'
+                  href='https://www.github.com/discountratio'
+                  target='_blank'
                   isExternal>
-                  LinkedIn
+                  GitHub
                 </Link>
               </Button>
             </Flex>
@@ -137,8 +146,22 @@ export default function UserInformation(props) {
         </Flex>
       </Flex>
 
+      <Flex justifyContent='space-between' fontSize='2xl'>
+        <Heading as='h2'>
+          My Languages
+        </Heading>
+        <Box>
+        <AddIcon 
+
+          style={{
+            cursor: "pointer",
+            hover: "blue.400",
+          }}
+
+        /> <DeleteIcon />
+        </Box>
+      </Flex>
       <UserLanguages />
-      
     </Flex>
   );
 }

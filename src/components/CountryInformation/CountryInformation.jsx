@@ -2,23 +2,35 @@ import React from "react";
 import { useState, useEffect, useRef } from "react";
 import LanguageContainer from "./LanguageContainer/LanguageContainer";
 import CountrySelection from "./CountrySelection/CountrySelection";
-import "./CountryInformation.scss";
-import { Heading, Link, Text, Flex, Box, Image } from "@chakra-ui/react";
+import {
+  Heading,
+  Link,
+  Text,
+  Flex,
+  Box,
+  Image,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+  useDisclosure,
+  Button,
+} from "@chakra-ui/react";
 
-/*
-Takes in the countryCode prop and renders the infortmation from the fetch responses
-*/
+//Takes in the countryCode prop and renders the infortmation from the fetch responses
+
 export default function CountryInformation(props) {
   const countryCode = props.countryCode;
   const setCountryCode = props.setCountryCode;
-
   const countryData = props.countryData;
   const setCountryData = props.setCountryData;
 
-  const [countryCCA2, setCountryCCA2] = useState("");
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   //set states
-
   const [countryLanguages, setCountryLanguages] = useState([]);
   const [countryNameOffical, setCountryNameOffical] = useState("");
   const [countryNameCommon, setCountryNameCommon] = useState("");
@@ -117,68 +129,74 @@ export default function CountryInformation(props) {
   }, [countryData]);
 
   return (
-    <Flex flexDirection='column' className='country-info'>
-      <Heading as='h2'>Add A Language</Heading>
-      <CountrySelection
-        setCountryCode={setCountryCode}
-        fetchCountryDataFromCode={fetchCountryDataFromCode}
-        setCountryStates={setCountryStates}
-      />
-      <div className='country-info__container'>
-        <Flex>
-          <Box>
-            <Image
-              src={countryFlagSVG ? countryFlagSVG : countryFlagIcon}
-              alt={
-                countryFlagAlt ? countryFlagAlt : `flag of ${countryNameCommon}`
-              }
-            />
-          </Box>
-          <Box>
-            <Image
-              src={countryCoatOfArms ? countryCoatOfArms : countryFlagIcon}
-              alt={
-                countryCoatOfArms ? `The ${countryNameCommon} Coat of Arms` : 'No coat of arms here.'
-              }
-            />
-          </Box>
-        </Flex>
-        <div className='country-info__container__info__languages'>
-          {countryLanguages
-            ? countryLanguages.map((language, index) => {
-                return (
-                  <LanguageContainer
-                    key={index}
-                    language={language}
-                    countryName={countryNameCommon}
-                    countryFlag={countryFlagSVG}
-                  />
-                );
-              })
-            : null}
+    <>
+      <Flex flexDirection='column' className='country-info'>
+        <Heading as='h2'>Add A Language</Heading>
+        <CountrySelection
+          setCountryCode={setCountryCode}
+          fetchCountryDataFromCode={fetchCountryDataFromCode}
+          setCountryStates={setCountryStates}
+        />
+        <div className='country-info__container'>
+          <Flex>
+            <Box>
+              <Image
+                src={countryFlagSVG ? countryFlagSVG : countryFlagIcon}
+                alt={
+                  countryFlagAlt
+                    ? countryFlagAlt
+                    : `flag of ${countryNameCommon}`
+                }
+              />
+            </Box>
+            <Box>
+              <Image
+                src={countryCoatOfArms ? countryCoatOfArms : countryFlagIcon}
+                alt={
+                  countryCoatOfArms
+                    ? `The ${countryNameCommon} Coat of Arms`
+                    : "No coat of arms here."
+                }
+              />
+            </Box>
+          </Flex>
+          <div className='country-info__container__info__languages'>
+            {countryLanguages
+              ? countryLanguages.map((language, index) => {
+                  return (
+                    <LanguageContainer
+                      key={index}
+                      language={language}
+                      countryName={countryNameCommon}
+                      countryFlag={countryFlagSVG}
+                    />
+                  );
+                })
+              : null}
+          </div>
+
+          <Text>
+            <strong>Official</strong>: {countryNameOffical}
+          </Text>
+
+          <Text>
+            <strong>Common</strong>: {countryNameCommon}
+          </Text>
+          <Text>
+            <strong>Capital</strong>: {countryCapital}
+          </Text>
+          <Text>
+            <strong>Region</strong>: {countryRegion}
+          </Text>
+          <Text>
+            <strong>Sub-Region</strong>: {countrySubregion}
+          </Text>
+
+          <Text>
+            <strong>Population</strong>: {countryPopulation}
+          </Text>
         </div>
-
-        <Text>
-          <strong>Official</strong>: {countryNameOffical}
-        </Text>
-
-        <Text>
-          <strong>Common</strong>: {countryNameCommon}
-        </Text>
-        <Text>
-          <strong>Capital</strong>: {countryCapital}
-        </Text>
-        <Text>
-          <strong>Region</strong>: {countryRegion}
-        </Text>
-        <Text>
-          <strong>Sub-Region</strong>: {countrySubregion}
-        </Text>
-
-        <Text>
-          <strong>Population</strong>: {countryPopulation}
-        </Text>
-      </div>
-    </Flex>
+      </Flex>
+    </>
   );
 }

@@ -3,7 +3,7 @@ import { useState, useForm, useEffect } from "react";
 import "./App.scss";
 import UserInformation from "./components/UserProfile/UserProfile";
 import CountryInformation from "./components/CountryInformation/CountryInformation";
-
+import CountryModal from "./components/CountryInformation/CountryModal/CountryModal";
 
 
 function App() {
@@ -35,12 +35,14 @@ function App() {
           countryCode={countryCode}
         />
 
-        <CountryInformation
-          countryData={countryData}
-          setCountryData={setCountryData}
-          countryCode={countryCode}
-          setCountryCode={setCountryCode}
-        /> 
+
+<CountryModal  
+   countryData={countryData}
+   setCountryData={setCountryData}
+   countryCode={countryCode}
+   setCountryCode={setCountryCode}
+/>
+      
       </div>
   );
 }

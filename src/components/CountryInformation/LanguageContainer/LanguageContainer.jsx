@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 
-import "./LanguageContainer.scss";
 
 export default function LanguageContainer(props) {
   const language = props.language;
