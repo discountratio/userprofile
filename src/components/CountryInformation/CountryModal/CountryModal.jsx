@@ -10,7 +10,9 @@ import {
   useDisclosure,
   Button,
 } from "@chakra-ui/react";
-
+import {
+  AddIcon
+} from "@chakra-ui/icons";
 import CountryInformation from "../CountryInformation";
 
 export default function CountryModal(props) {
@@ -22,7 +24,17 @@ export default function CountryModal(props) {
 
   return (
     <>
-      <Button onClick={onOpen}>Open Modal</Button>
+      <Button onClick={onOpen}
+        bg='transparent'
+        color='gray.800'
+        size='xl'
+        _hover={{ bg: 'gray.100',
+        color: 'orange.500'
+      }}
+        _active={{ bg: 'gray.200' }}
+        _focus={{ boxShadow: 'none' }}
+
+      ><AddIcon/></Button>
 
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />

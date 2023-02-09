@@ -20,6 +20,7 @@ import {
   PhoneIcon,
   SunIcon,
 } from "@chakra-ui/icons";
+import CountryModal from "../CountryInformation/CountryModal/CountryModal";
 import UserLanguages from "./UserLanguages/UserLanguages";
 import { transform } from "framer-motion";
 
@@ -151,14 +152,17 @@ export default function UserInformation(props) {
           My Languages
         </Heading>
         <Box>
-        <AddIcon 
 
-          style={{
-            cursor: "pointer",
-            hover: "blue.400",
-          }}
+        <CountryModal
+        countryData={props.countryData}
+        setCountryData={props.setCountryData}
+        countryCode={props.countryCode}
+        setCountryCode={props.setCountryCode}
+      />
 
-        /> <DeleteIcon />
+      
+
+        <DeleteIcon />
         </Box>
       </Flex>
       <UserLanguages />

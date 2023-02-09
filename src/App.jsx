@@ -28,15 +28,18 @@ function App() {
       <UserInformation
         userData={userData}
         setUserData={setUserData}
-        countryCode={countryCode}
-      />
-
-      <CountryModal
         countryData={countryData}
         setCountryData={setCountryData}
         countryCode={countryCode}
         setCountryCode={setCountryCode}
       />
+{/* 
+      <CountryModal
+        countryData={countryData}
+        setCountryData={setCountryData}
+        countryCode={countryCode}
+        setCountryCode={setCountryCode}
+      /> */}
     </div>
   );
 }
