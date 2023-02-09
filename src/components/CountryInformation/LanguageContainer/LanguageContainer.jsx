@@ -1,16 +1,16 @@
+import { AddIcon, CheckIcon } from "@chakra-ui/icons";
+import { Flex } from "@chakra-ui/react";
 import React, { useState, useEffect } from "react";
-
+import { Checkbox, CheckboxGroup, Box, Text } from "@chakra-ui/react";
+import LanguageSlider from "./LanguageSlider/LanguageSlider";
 
 export default function LanguageContainer(props) {
   const language = props.language;
 
-
-  const [languageLevel, setLanguageLevel] = useState(50);
+  const [languageLevel, setLanguageLevel] = useState("None");
   const [languageCheckbox, setLanguageCheckbox] = useState(false);
   const [languageCountry, setLanguageCountry] = useState("");
   const [languageFlag, setLanguageFlag] = useState("");
-
-  
 
   //reset on new language
   useEffect(() => {
@@ -19,6 +19,15 @@ export default function LanguageContainer(props) {
     setLanguageCountry("");
     setLanguageFlag("");
   }, [language]);
+
+  const languageLevels = {
+    0: "None",
+    1: "Beginner",
+    2: "Working",
+    3: "Professional",
+    4: "Fluent",
+    5: "Native",
+  };
 
   //Handlers
   const handleLanguageCheckbox = (e) => {
@@ -29,13 +38,13 @@ export default function LanguageContainer(props) {
     setLanguageLevel(e.target.value);
   };
 
-  const handleLanguageCountry = (e) => {
-    setLanguageCountry(e.target.value);
-  };
+  // const handleLanguageCountry = (e) => {
+  //   setLanguageCountry(e.target.value);
+  // };
 
-  const handleLanguageFlag = (e) => {
-    setLanguageFlag(e.target.value);
-  };
+  // const handleLanguageFlag = (e) => {
+  //   setLanguageFlag(e.target.value);
+  // };
 
   //Adds language and level to local storage, if language already exists, it updates the leves
   const handleAddButton = (e) => {
@@ -46,8 +55,6 @@ export default function LanguageContainer(props) {
     const languageArray = temp ? JSON.parse(temp) : [];
     const country = props.countryName;
     const flag = props.countryFlag;
-
-
 
     //create language object
     const languageObject = {
@@ -64,7 +71,6 @@ export default function LanguageContainer(props) {
 
     if (languageIndex !== -1) {
       languageArray[languageIndex].level = languageObject.level;
-
     } else {
       languageArray.push(languageObject);
     }
@@ -73,37 +79,50 @@ export default function LanguageContainer(props) {
     window.localStorage.setItem("languageArray", JSON.stringify(languageArray));
   };
 
-
   return (
-    <div className='language-input-container'>
-      <label className='language-title'>
-        {language}
-
-        <input
-          type='checkbox'
-          name='language-checkbox'
-          className='language-checkbox'
+    <Flex className='language-input-container'
+    bg='purple.300'
+    color='gray.100'
+    alignItems='center'
+    >
+      <Flex
+        className='language-title'
+        alignContent='center'
+        px='2'
+        py='1'
+        lineHeight='1.5'
+        w='140px'
+        
+        >
+        <Checkbox
+          size='lg'
+          iconSize='2rem'
+          border='3px'
+          borderRadius='md'
+          borderColor='gray.400'
+          colorScheme='green'
+          bg='yellow'
           checked={languageCheckbox}
           onChange={handleLanguageCheckbox}
         />
-      </label>
+        <Text w='120px'>{language}</Text>
+      </Flex>
 
       {languageCheckbox ? (
         <>
-          <label>
-            Skill Level:
-            <input
-              type='range'
-              name='language-range'
-              className='language-range'
-              onChange={handleLanguageRange}
-            />
-            <span className='language-range-text'>{languageLevel}%</span>
-          </label>
+          <Flex
+            flexDirection='column'
+            width='300px'
+            alignItems='center'
+            justifyContent='center'>
+            <LanguageSlider />
+          </Flex>
 
-          <button onClick={handleAddButton}>Add Language</button>
+          <button onClick={handleAddButton}>
+            <AddIcon />
+          </button>
         </>
       ) : null}
-    </div>
+    </Flex>
   );
 }

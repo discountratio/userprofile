@@ -130,17 +130,23 @@ export default function CountryInformation(props) {
 
   return (
     <>
-      <Flex flexDirection='column' className='country-info'>
-        <Heading as='h2'>Add A Language</Heading>
+      <Flex flexDirection='column' className='country-info'
+      mt='4'
+      >
         <CountrySelection
           setCountryCode={setCountryCode}
           fetchCountryDataFromCode={fetchCountryDataFromCode}
           setCountryStates={setCountryStates}
         />
         <div className='country-info__container'>
-          <Flex>
-            <Box>
+          <Flex 
+            justifyContent='center'
+          >
+            <Box mt='4'>
               <Image
+              h='200px'
+              border='4px'
+              
                 src={countryFlagSVG ? countryFlagSVG : countryFlagIcon}
                 alt={
                   countryFlagAlt
@@ -149,7 +155,7 @@ export default function CountryInformation(props) {
                 }
               />
             </Box>
-            <Box>
+            {/* <Box>
               <Image
                 src={countryCoatOfArms ? countryCoatOfArms : countryFlagIcon}
                 alt={
@@ -158,9 +164,16 @@ export default function CountryInformation(props) {
                     : "No coat of arms here."
                 }
               />
-            </Box>
+            </Box> */}
           </Flex>
-          <div className='country-info__container__info__languages'>
+
+          <Flex 
+            flexDirection='column'
+            mt='4'
+            gap='2'
+            p='2'
+            
+          className='country-info__container__info__languages'>
             {countryLanguages
               ? countryLanguages.map((language, index) => {
                   return (
@@ -173,28 +186,28 @@ export default function CountryInformation(props) {
                   );
                 })
               : null}
-          </div>
+          </Flex>
 
-          <Text>
-            <strong>Official</strong>: {countryNameOffical}
-          </Text>
+            {/* <Text>
+              <strong>Official</strong>: {countryNameOffical}
+            </Text>
 
-          <Text>
-            <strong>Common</strong>: {countryNameCommon}
-          </Text>
-          <Text>
-            <strong>Capital</strong>: {countryCapital}
-          </Text>
-          <Text>
-            <strong>Region</strong>: {countryRegion}
-          </Text>
-          <Text>
-            <strong>Sub-Region</strong>: {countrySubregion}
-          </Text>
+            <Text>
+              <strong>Common</strong>: {countryNameCommon}
+            </Text>
+            <Text>
+              <strong>Capital</strong>: {countryCapital}
+            </Text>
+            <Text>
+              <strong>Region</strong>: {countryRegion}
+            </Text>
+            <Text>
+              <strong>Sub-Region</strong>: {countrySubregion}
+            </Text>
 
-          <Text>
-            <strong>Population</strong>: {countryPopulation}
-          </Text>
+            <Text>
+              <strong>Population</strong>: {countryPopulation}
+            </Text> */}
         </div>
       </Flex>
     </>

@@ -5,10 +5,7 @@ import UserInformation from "./components/UserProfile/UserProfile";
 import CountryInformation from "./components/CountryInformation/CountryInformation";
 import CountryModal from "./components/CountryInformation/CountryModal/CountryModal";
 
-
 function App() {
-
-
   const [userData, setUserData] = useState("");
   const [countryData, setCountryData] = useState("");
   const [countryCode, setCountryCode] = useState("");
@@ -26,24 +23,21 @@ function App() {
   };
 
   return (
-      <div className='App'>
-        {/* <h2>Language Profile App</h2> */}
+    <div className='App'>
 
-        <UserInformation
-          userData={userData}
-          setUserData={setUserData}
-          countryCode={countryCode}
-        />
+      <UserInformation
+        userData={userData}
+        setUserData={setUserData}
+        countryCode={countryCode}
+      />
 
-
-<CountryModal  
-   countryData={countryData}
-   setCountryData={setCountryData}
-   countryCode={countryCode}
-   setCountryCode={setCountryCode}
-/>
-      
-      </div>
+      <CountryModal
+        countryData={countryData}
+        setCountryData={setCountryData}
+        countryCode={countryCode}
+        setCountryCode={setCountryCode}
+      />
+    </div>
   );
 }
 

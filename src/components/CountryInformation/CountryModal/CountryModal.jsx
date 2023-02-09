@@ -26,7 +26,10 @@ export default function CountryModal(props) {
 
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
+        
         <ModalContent>
+        <ModalHeader>Modal Title</ModalHeader>
+          
           <CountryInformation
             countryData={props.countryData}
             setCountryData={props.setCountryData}
@@ -34,7 +37,6 @@ export default function CountryModal(props) {
             setCountryCode={props.setCountryCode}
           />
 
-          <ModalHeader>Modal Title</ModalHeader>
 
           <ModalCloseButton />
           <ModalBody></ModalBody>
