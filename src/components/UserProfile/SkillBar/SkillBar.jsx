@@ -1,5 +1,5 @@
 import React from "react";
-import { Heading, Link, Text, Flex, Box } from "@chakra-ui/react";
+import { Heading, Link, Text, Flex, Box, Progress } from "@chakra-ui/react";
 
 /*
     skill-container
@@ -18,55 +18,55 @@ export default function SkillBar(props) {
   const flag = props.flag;
 
   return (
-    <Box
+    <Flex
       m='4'
-      p='2'
-      border='2px solid black'
-      maxWidth='600px'
+      p='4'
+      flexDir={["column"]}
+      alignItems='center'
       rounded='lg'
       flexBasis={["100%", "30%"]}
-      boxShadow='8px 8px black'
-      bg='gray.100'
+      bg='gray.200'
       color='gray.800'
       position='relative'
-      top='0'
-      left='0'
-      
-        _hover={{
-        bg: "gray.200",
-        color: "gray.900",
-        top: "4px",
-        left: "4px",
-        boxShadow: "2px 2px black",
-        transition: "all 0.2s ease-in-out",
-    
-        }}
       className='skill-container'>
-      <Heading as='h3' size='md' className='skill-name'>
-        {language} - {country}
+      <Box className='skill-flag-container' boxShadow='lg' w='auto'>
+        <img
+          className='skill-flag'
+          src={flag}
+          alt={`flag of ${country}`}
+          style={{
+            width: 200,
+            aspectRatio: 2 / 1,
+            objectFit: "contain",
+          }}
+        />
+      </Box>
+
+      <Heading as='h4' size='sm' className='skill-name'>
+        {language}
       </Heading>
+      <Text size='sm'>{country}</Text>
+      <Flex
+        w='100%'
+        h='100%'
+        alignItems='center'
+        gap='2'
+        p='2'
+  
+        className='skill-bar-container'>
+        {level}%
+        <Progress
+          className='skill-bar'
+          height='20px'
+          width='100%'
+          bg='gray.100'
+          colorScheme='blue'
+          borderRadius='20'
+          boxShadow='xl'
+        
 
-      <div className='skill-bar-container'>
-        <div className='skill-bar'>
-          <Text fontSize='xl' className='skill-bar-text'>
-            {level}%
-          </Text>
-        </div>
-
-
-        <div className='skill-flag-container'>
-          <img
-            className='skill-flag'
-            src={flag}
-            alt={`flag of ${country}`}
-            style={{
-              width: 200,
-              aspectRatio: 2 / 1,
-              objectFit: "contain",
-            }}
-          />
-        </div>
-      </div>
-    </Box>
+          value={level}></Progress>
+      </Flex>
+    </Flex>
   );
 }
