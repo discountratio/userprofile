@@ -29,19 +29,7 @@ export default function CountryInformation(props) {
   const setCountryData = props.setCountryData;
 
   const { isOpen, onOpen, onClose } = useDisclosure();
-
-  //set states
   const [countryLanguages, setCountryLanguages] = useState([]);
-  // const [countryNameOffical, setCountryNameOffical] = useState("");
-  // const [countryNameCommon, setCountryNameCommon] = useState("");
-  // const [countryCapital, setCountryCapital] = useState("");
-  // const [countryPopulation, setCountryPopulation] = useState("");
-  // const [countryRegion, setCountryRegion] = useState("");
-  // const [countrySubregion, setCountrySubregion] = useState("");
-  // const [countryFlagIcon, setCountryFlagIcon] = useState("");
-  // const [countryFlagSVG, setCountryFlagSVG] = useState("");
-  // const [countryFlagAlt, setCountryFlagAlt] = useState("");
-  // const [countryCoatOfArms, setCountryCoatOfArms] = useState("");
 
   const restCountriesURL = "https://restcountries.com/v3.1/";
 
@@ -51,9 +39,7 @@ export default function CountryInformation(props) {
       const array = [];
       for (const [key, value] of Object.entries(object)) {
         array.push(value);
-        // console.log(`${key}: ${value}`);
       }
-      // console.log(array);
       return array;
     }
     return null;
@@ -81,10 +67,11 @@ export default function CountryInformation(props) {
     }
   };
 
-  const setCountryStates = () => {
-    if (countryData) {
-      setCountryLanguages(objectEntriesToArray(countryData.languages));
-    }
+  
+  const setCountryLanguages = () => {
+    countryData
+      ? setCountryLanguages(objectEntriesToArray(countryData.languages))
+      : setCountryLanguages(null);
   };
 
   const saveCountryDataToLocalStorage = () => {
@@ -110,7 +97,7 @@ export default function CountryInformation(props) {
 
   useEffect(() => {
     if (countryData) {
-      setCountryStates();
+      setCountryLanguages();
       saveCountryDataToLocalStorage();
     }
   }, [countryData]);
@@ -125,7 +112,7 @@ export default function CountryInformation(props) {
         <CountrySelection
           setCountryCode={setCountryCode}
           fetchCountryDataFromCode={fetchCountryDataFromCode}
-          setCountryStates={setCountryStates}
+          setCountryLanguages={setCountryLanguages}
         />
 
         <Flex
