@@ -21,13 +21,17 @@ export default function CountryModal(props) {
     <>
       <Button
         onClick={onOpen}
-        bg='transparent'
+        bg='green.300'
         color='gray.800'
         size='xl'
-        _hover={{ bg: "gray.100", color: "orange.500" }}
+        fontSize='xl'
+        h='12'
+        w='20'
+        _hover={{ bg: "green.200", color: "orange.500"}}
         _active={{ bg: "gray.200" }}
-        _focus={{ boxShadow: "none" }}>
-        <AddIcon />
+        >
+        {/* <AddIcon /> */}
+        Add
       </Button>
 
       <Modal isOpen={isOpen} onClose={onClose}>
@@ -44,6 +48,7 @@ export default function CountryModal(props) {
               countryData={props.countryData}
               setCountryCode={props.setCountryCode}
               countryLanguages={props.countryLanguages}
+              setRefreshLanguages={props.setRefreshLanguages}
             />
           </ModalBody>
 

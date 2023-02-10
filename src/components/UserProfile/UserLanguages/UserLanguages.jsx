@@ -5,8 +5,7 @@ import { Heading, Link, Text, Flex, Box } from "@chakra-ui/react";
 export default function UserLanguages(props) {
   const [languageData, setLanguageData] = useState([]);
 
-  // setLanguageData(JSON.parse(window.localStorage.getItem("languageArray")));
-  // console.log(languageData);
+
 
   const renderLanguageData = () => {
     if (languageData) {
@@ -33,7 +32,10 @@ export default function UserLanguages(props) {
       flexWrap='wrap'
       alignItems='center'
       justifyContent='center'
-      id='user-languages'>
+      id='user-languages'
+      px={[8, 12, 16, 24]}
+      
+      >
       {renderLanguageData()}
     </Flex>
   );

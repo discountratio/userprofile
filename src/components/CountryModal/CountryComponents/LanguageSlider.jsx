@@ -10,7 +10,6 @@ import {
   Tooltip,
   Flex,
 } from "@chakra-ui/react";
-import { TriangleUpIcon } from "@chakra-ui/icons";
 export default function LanguageSlider(props) {
   const [sliderValue, setSliderValue] = React.useState(1);
   const [showTooltip, setShowTooltip] = React.useState(false);
@@ -51,13 +50,9 @@ export default function LanguageSlider(props) {
           <SliderFilledTrack bg='blue.300' />
         </SliderTrack>
 
-       
-
-
         <SliderThumb
           border='4px'
           borderColor='blue.300'
-
           _hover={{
             boxShadow: "0 0 1px 2px #000",
           }}

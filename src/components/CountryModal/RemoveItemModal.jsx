@@ -14,12 +14,17 @@ import {
   Text,
   Flex,
 } from "@chakra-ui/react";
+
+
+
 import LanguageContainer from './CountryComponents/LanguageContainer'
 export default function RemoveItemModal(props) {
   const [languageData, setLanguageData] = useState([]);
   const { isOpen, onOpen, onClose } = useDisclosure();
-const buttonType ='remove'  // setLanguageData(JSON.parse(window.localStorage.getItem("languageArray")));
+const buttonType = 'Edit?' // setLanguageData(JSON.parse(window.localStorage.getItem("languageArray")));
   // console.log(languageData);
+
+  const [languageLevel, setLanguageLevel] = useState(1);
 
   const renderLanguageData = () => {
     if (languageData) {
@@ -60,14 +65,25 @@ const buttonType ='remove'  // setLanguageData(JSON.parse(window.localStorage.ge
 
   return (
     <>
-      <Button onClick={onOpen}>Open Modal</Button>
+      <Button onClick={onOpen} 
+           bg='green.300'
+           color='gray.800'
+           size='xl'
+           fontSize='xl'
+           h='12'
+           w='20'
+            m='4'
+
+           _hover={{ bg: "green.200", color: "orange.500" }}
+           _active={{ bg: "gray.200" }}
+      
+      >Edit</Button>
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>Remove Language</ModalHeader>
+          <ModalHeader>Edit Languages</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <Text>Are you sure you want to remove this language?</Text>
             <Flex
               flexWrap='wrap'
               alignItems='center'
@@ -81,7 +97,6 @@ const buttonType ='remove'  // setLanguageData(JSON.parse(window.localStorage.ge
             <Button colorScheme='blue' mr={3} onClick={onClose}>
               Close
             </Button>
-            <Button variant='ghost'>Secondary Action</Button>
           </ModalFooter>
         </ModalContent>
       </Modal>

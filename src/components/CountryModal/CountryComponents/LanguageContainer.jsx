@@ -1,4 +1,4 @@
-import { AddIcon, CheckIcon } from "@chakra-ui/icons";
+import { AddIcon, CheckIcon, DeleteIcon } from "@chakra-ui/icons";
 import { Flex, Button, Heading } from "@chakra-ui/react";
 import React, { useState, useEffect } from "react";
 import { Checkbox, CheckboxGroup, Box, Text } from "@chakra-ui/react";
@@ -53,6 +53,8 @@ export default function LanguageContainer(props) {
 
     //set language array in local storage
     setLanguageAdded(true);
+    props.setRefreshLanguages(true);
+    
     window.localStorage.setItem("languageArray", JSON.stringify(languageArray));
   };
 
@@ -60,7 +62,7 @@ export default function LanguageContainer(props) {
     <Flex
       className='language-input-container'
       flexDirection='column'
-      h='100px'
+      h='auto'
       bg='gray.200'
       border='2px'>
       <Heading
@@ -70,32 +72,37 @@ export default function LanguageContainer(props) {
         color='gray.100'
         display='flex'
         alignContent='center'
-
-        px='1'
-        h='8'
-        
-        >
+        h='8'>
         <Checkbox
-          checked='false'
+          checked={false}
           onChange={handleLanguageCheckbox}
           colorScheme='green'
           size='lg'
           mx='1'
-          
         />
         {language}
       </Heading>
-      <Flex className='language-title' w='100%' justifyContent='space-between'>
+
+      <Flex
+        className='language-title'
+        w='100%'
+        justifyContent='space-between'
+        alignContent='center'
+        h='fit-content'>
         {languageCheckbox ? (
           <Flex p='4' flexDirection='row' w='100%'>
             <LanguageSlider setLanguageLevel={setLanguageLevel} />
 
-            <Button onClick={handleAddButton}
+            <Button
+              onClick={handleAddButton}
               bg='transparent'
               color='black'
-              _hover = {{bg: 'green.200'}} 
-            >
-              {!languageAdded ? <Text color='black'>{props.buttonType}</Text> : <CheckIcon boxSize='4' />}
+              _hover={{ bg: "green.200" }}>
+              {!languageAdded ? (
+                <Text color='black'>{props.buttonType}</Text>
+              ) : (
+                <CheckIcon boxSize='4' />
+              )}
             </Button>
           </Flex>
         ) : null}

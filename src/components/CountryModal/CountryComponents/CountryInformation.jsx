@@ -1,18 +1,15 @@
 import React from "react";
 import LanguageContainer from "./LanguageContainer";
 import CountrySelection from "./CountrySelection";
-import {
-  Flex,
-  Image,
-} from "@chakra-ui/react";
-import {AddIcon} from "@chakra-ui/icons";
+import { Flex, Image } from "@chakra-ui/react";
+import { AddIcon } from "@chakra-ui/icons";
 
 //Takes in the countryCode prop and renders the infortmation from the fetch responses
 
 export default function CountryInformation(props) {
   const countryData = props.countryData;
   const countryLanguages = props.countryLanguages;
-  const buttonType ='Add'
+  const buttonType = "Add";
   return (
     <>
       <Flex flexDirection='column' className='country-info' mt='4'>
@@ -30,14 +27,40 @@ export default function CountryInformation(props) {
             src={countryData.flags.svg}
             fallbackSrc='https://via.placeholder.com/300x200'
             alt={countryData.flags.alt || `flag of ${countryData.name.common}`}
+            transition='transform 200ms ease-in-out'
+            _hover={{
+              transform: "scale(1.1)",
+            }}
+            _active={{
+              zIndex: 100,
+              position: "fixed",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+              w: "auto",
+              h: "600px",
+            }}
           />
           <Image
-            w='100px'
-            h='200px'
+            w='40px'
+            h='80px'
             objectFit={"contain"}
             src={countryData.coatOfArms.svg}
-            fallbackSrc='https://via.placeholder.com/200x200'
+            fallbackSrc='https://via.placeholder.com/40x80'
             alt={countryData.flags.alt || `flag of ${countryData.name.common}`}
+            transition='transform 200ms ease-in-out'
+            _hover={{
+              transform: "scale(1.1)",
+            }}
+            _active={{
+              zIndex: 100,
+              position: "fixed",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+              w: "600px",
+              h: "auto",
+            }}
           />
         </Flex>
 
@@ -56,35 +79,12 @@ export default function CountryInformation(props) {
                     countryName={countryData.name.common}
                     countryFlag={countryData.flags.svg}
                     buttonType={buttonType}
+                    setRefreshLanguages={props.setRefreshLanguages}
                   />
                 );
               })
             : null}
         </Flex>
-
-
-        {/* <Box className='country-info-text'>
-          <Text>
-            <strong>Official</strong>: {countryData.name.official}
-          </Text>
-
-          <Text>
-            <strong>Common</strong>: {countryData.name.common}
-          </Text>
-          <Text>
-            <strong>Capital</strong>: {countryData.capital}
-          </Text>
-          <Text>
-            <strong>Region</strong>: {countryData.region}
-          </Text>
-          <Text>
-            <strong>Sub-Region</strong>: {countryData.subregion}
-          </Text>
-
-          <Text>
-            <strong>Population</strong>: {countryData.population}
-          </Text>
-        </Box> */}
       </Flex>
     </>
   );
