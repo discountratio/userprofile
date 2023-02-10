@@ -20,6 +20,21 @@ export default function LanguageContainer(props) {
     setLanguageFlag("");
   }, [language]);
 
+
+    //convert object to array
+    function objectEntriesToArray(object) {
+      if (object) {
+        const array = [];
+        for (const [key, value] of Object.entries(object)) {
+          array.push(value);
+          // console.log(`${key}: ${value}`);
+        }
+        // console.log(array);
+        return array;
+      }
+      return null;
+    }
+  
   const languageLevels = {
     0: "None",
     1: "Beginner",
@@ -79,6 +94,8 @@ export default function LanguageContainer(props) {
     window.localStorage.setItem("languageArray", JSON.stringify(languageArray));
   };
 
+
+  
   return (
     <Flex className='language-input-container'
     bg='purple.300'

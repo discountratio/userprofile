@@ -90,7 +90,7 @@ const countryCodes = [
       "Numeric": 31
     },
     {
-      "Country": "Bahamas (the)",
+      "Country": "Bahamas",
       "code2": "BS",
       "code3": "BHS",
       "Numeric": 44
@@ -150,7 +150,7 @@ const countryCodes = [
       "Numeric": 64
     },
     {
-      "Country": "Bolivia (Plurinational State of)",
+      "Country": "Bolivia",
       "code2": "BO",
       "code3": "BOL",
       "Numeric": 68
@@ -186,7 +186,7 @@ const countryCodes = [
       "Numeric": 76
     },
     {
-      "Country": "British Indian Ocean Territory (the)",
+      "Country": "British Indian Ocean Territory",
       "code2": "IO",
       "code3": "IOT",
       "Numeric": 86
@@ -240,13 +240,13 @@ const countryCodes = [
       "Numeric": 124
     },
     {
-      "Country": "Cayman Islands (the)",
+      "Country": "Cayman Islands",
       "code2": "KY",
       "code3": "CYM",
       "Numeric": 136
     },
     {
-      "Country": "Central African Republic (the)",
+      "Country": "Central African Republic",
       "code2": "CF",
       "code3": "CAF",
       "Numeric": 140
@@ -276,7 +276,7 @@ const countryCodes = [
       "Numeric": 162
     },
     {
-      "Country": "Cocos (Keeling) Islands (the)",
+      "Country": "Cocos (Keeling) Islands",
       "code2": "CC",
       "code3": "CCK",
       "Numeric": 166
@@ -288,25 +288,25 @@ const countryCodes = [
       "Numeric": 170
     },
     {
-      "Country": "Comoros (the)",
+      "Country": "Comoros",
       "code2": "KM",
       "code3": "COM",
       "Numeric": 174
     },
     {
-      "Country": "Congo (the Democratic Republic of the)",
+      "Country": "Congo",
       "code2": "CD",
       "code3": "COD",
       "Numeric": 180
     },
     {
-      "Country": "Congo (the)",
+      "Country": "Congo",
       "code2": "CG",
       "code3": "COG",
       "Numeric": 178
     },
     {
-      "Country": "Cook Islands (the)",
+      "Country": "Cook Islands",
       "code2": "CK",
       "code3": "COK",
       "Numeric": 184
@@ -372,7 +372,7 @@ const countryCodes = [
       "Numeric": 212
     },
     {
-      "Country": "Dominican Republic (the)",
+      "Country": "Dominican Republic",
       "code2": "DO",
       "code3": "DOM",
       "Numeric": 214
@@ -426,13 +426,13 @@ const countryCodes = [
       "Numeric": 231
     },
     {
-      "Country": "Falkland Islands (the) [Malvinas]",
+      "Country": "Falkland Islands",
       "code2": "FK",
       "code3": "FLK",
       "Numeric": 238
     },
     {
-      "Country": "Faroe Islands (the)",
+      "Country": "Faroe Islands",
       "code2": "FO",
       "code3": "FRO",
       "Numeric": 234
@@ -468,7 +468,7 @@ const countryCodes = [
       "Numeric": 258
     },
     {
-      "Country": "French Southern Territories (the)",
+      "Country": "French Southern Territories",
       "code2": "TF",
       "code3": "ATF",
       "Numeric": 260
@@ -480,7 +480,7 @@ const countryCodes = [
       "Numeric": 266
     },
     {
-      "Country": "Gambia (the)",
+      "Country": "Gambia",
       "code2": "GM",
       "code3": "GMB",
       "Numeric": 270
@@ -582,7 +582,7 @@ const countryCodes = [
       "Numeric": 334
     },
     {
-      "Country": "Holy See (the)",
+      "Country": "Holy See",
       "code2": "VA",
       "code3": "VAT",
       "Numeric": 336
@@ -624,7 +624,7 @@ const countryCodes = [
       "Numeric": 360
     },
     {
-      "Country": "Iran (Islamic Republic of)",
+      "Country": "Iran",
       "code2": "IR",
       "code3": "IRN",
       "Numeric": 364
@@ -702,13 +702,13 @@ const countryCodes = [
       "Numeric": 296
     },
     {
-      "Country": "Korea (the Democratic People's Republic of)",
+      "Country": "North Korea",
       "code2": "KP",
       "code3": "PRK",
       "Numeric": 408
     },
     {
-      "Country": "Korea (the Republic of)",
+      "Country": "South Korea",
       "code2": "KR",
       "code3": "KOR",
       "Numeric": 410
@@ -726,7 +726,7 @@ const countryCodes = [
       "Numeric": 417
     },
     {
-      "Country": "Lao People's Democratic Republic (the)",
+      "Country": "Laos",
       "code2": "LA",
       "code3": "LAO",
       "Numeric": 418
@@ -822,7 +822,7 @@ const countryCodes = [
       "Numeric": 470
     },
     {
-      "Country": "Marshall Islands (the)",
+      "Country": "Marshall Islands",
       "code2": "MH",
       "code3": "MHL",
       "Numeric": 584
@@ -858,13 +858,13 @@ const countryCodes = [
       "Numeric": 484
     },
     {
-      "Country": "Micronesia (Federated States of)",
+      "Country": "Micronesia",
       "code2": "FM",
       "code3": "FSM",
       "Numeric": 583
     },
     {
-      "Country": "Moldova (the Republic of)",
+      "Country": "Moldova",
       "code2": "MD",
       "code3": "MDA",
       "Numeric": 498
@@ -930,7 +930,7 @@ const countryCodes = [
       "Numeric": 524
     },
     {
-      "Country": "Netherlands (the)",
+      "Country": "Netherlands",
       "code2": "NL",
       "code3": "NLD",
       "Numeric": 528
@@ -954,7 +954,7 @@ const countryCodes = [
       "Numeric": 558
     },
     {
-      "Country": "Niger (the)",
+      "Country": "Niger",
       "code2": "NE",
       "code3": "NER",
       "Numeric": 562
@@ -978,7 +978,7 @@ const countryCodes = [
       "Numeric": 574
     },
     {
-      "Country": "Northern Mariana Islands (the)",
+      "Country": "Northern Mariana Islands",
       "code2": "MP",
       "code3": "MNP",
       "Numeric": 580
@@ -1008,7 +1008,7 @@ const countryCodes = [
       "Numeric": 585
     },
     {
-      "Country": "Palestine, State of",
+      "Country": "Palestine",
       "code2": "PS",
       "code3": "PSE",
       "Numeric": 275
@@ -1038,7 +1038,7 @@ const countryCodes = [
       "Numeric": 604
     },
     {
-      "Country": "Philippines (the)",
+      "Country": "Philippines",
       "code2": "PH",
       "code3": "PHL",
       "Numeric": 608
@@ -1086,7 +1086,7 @@ const countryCodes = [
       "Numeric": 642
     },
     {
-      "Country": "Russian Federation (the)",
+      "Country": "Russian Federation",
       "code2": "RU",
       "code3": "RUS",
       "Numeric": 643
@@ -1128,7 +1128,7 @@ const countryCodes = [
       "Numeric": 662
     },
     {
-      "Country": "Saint Martin (French part)",
+      "Country": "Saint Martin",
       "code2": "MF",
       "code3": "MAF",
       "Numeric": 663
@@ -1200,7 +1200,7 @@ const countryCodes = [
       "Numeric": 702
     },
     {
-      "Country": "Sint Maarten (Dutch part)",
+      "Country": "Sint Maarten",
       "code2": "SX",
       "code3": "SXM",
       "Numeric": 534
@@ -1260,7 +1260,7 @@ const countryCodes = [
       "Numeric": 144
     },
     {
-      "Country": "Sudan (the)",
+      "Country": "Sudan",
       "code2": "SD",
       "code3": "SDN",
       "Numeric": 729
@@ -1296,7 +1296,7 @@ const countryCodes = [
       "Numeric": 760
     },
     {
-      "Country": "Taiwan (Province of China)",
+      "Country": "Taiwan",
       "code2": "TW",
       "code3": "TWN",
       "Numeric": 158
@@ -1308,7 +1308,7 @@ const countryCodes = [
       "Numeric": 762
     },
     {
-      "Country": "Tanzania, United Republic of",
+      "Country": "Tanzania",
       "code2": "TZ",
       "code3": "TZA",
       "Numeric": 834
@@ -1368,7 +1368,7 @@ const countryCodes = [
       "Numeric": 795
     },
     {
-      "Country": "Turks and Caicos Islands (the)",
+      "Country": "Turks and Caicos Islands",
       "code2": "TC",
       "code3": "TCA",
       "Numeric": 796
@@ -1392,25 +1392,25 @@ const countryCodes = [
       "Numeric": 804
     },
     {
-      "Country": "United Arab Emirates (the)",
+      "Country": "United Arab Emirates",
       "code2": "AE",
       "code3": "ARE",
       "Numeric": 784
     },
     {
-      "Country": "United Kingdom of Great Britain and Northern Ireland (the)",
+      "Country": "United Kingdom",
       "code2": "GB",
       "code3": "GBR",
       "Numeric": 826
     },
     {
-      "Country": "United States Minor Outlying Islands (the)",
+      "Country": "United States Minor Outlying Islands",
       "code2": "UM",
       "code3": "UMI",
       "Numeric": 581
     },
     {
-      "Country": "United States of America (the)",
+      "Country": "United States of America",
       "code2": "US",
       "code3": "USA",
       "Numeric": 840
@@ -1434,7 +1434,7 @@ const countryCodes = [
       "Numeric": 548
     },
     {
-      "Country": "Venezuela (Bolivarian Republic of)",
+      "Country": "Venezuela",
       "code2": "VE",
       "code3": "VEN",
       "Numeric": 862
@@ -1446,13 +1446,13 @@ const countryCodes = [
       "Numeric": 704
     },
     {
-      "Country": "Virgin Islands (British)",
+      "Country": "Virgin Islands",
       "code2": "VG",
       "code3": "VGB",
       "Numeric": 92
     },
     {
-      "Country": "Virgin Islands (U.S.)",
+      "Country": "Virgin Islands",
       "code2": "VI",
       "code3": "VIR",
       "Numeric": 850

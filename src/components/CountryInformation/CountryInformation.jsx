@@ -32,16 +32,16 @@ export default function CountryInformation(props) {
 
   //set states
   const [countryLanguages, setCountryLanguages] = useState([]);
-  const [countryNameOffical, setCountryNameOffical] = useState("");
-  const [countryNameCommon, setCountryNameCommon] = useState("");
-  const [countryCapital, setCountryCapital] = useState("");
-  const [countryPopulation, setCountryPopulation] = useState("");
-  const [countryRegion, setCountryRegion] = useState("");
-  const [countrySubregion, setCountrySubregion] = useState("");
-  const [countryFlagIcon, setCountryFlagIcon] = useState("");
-  const [countryFlagSVG, setCountryFlagSVG] = useState("");
-  const [countryFlagAlt, setCountryFlagAlt] = useState("");
-  const [countryCoatOfArms, setCountryCoatOfArms] = useState("");
+  // const [countryNameOffical, setCountryNameOffical] = useState("");
+  // const [countryNameCommon, setCountryNameCommon] = useState("");
+  // const [countryCapital, setCountryCapital] = useState("");
+  // const [countryPopulation, setCountryPopulation] = useState("");
+  // const [countryRegion, setCountryRegion] = useState("");
+  // const [countrySubregion, setCountrySubregion] = useState("");
+  // const [countryFlagIcon, setCountryFlagIcon] = useState("");
+  // const [countryFlagSVG, setCountryFlagSVG] = useState("");
+  // const [countryFlagAlt, setCountryFlagAlt] = useState("");
+  // const [countryCoatOfArms, setCountryCoatOfArms] = useState("");
 
   const restCountriesURL = "https://restcountries.com/v3.1/";
 
@@ -59,7 +59,7 @@ export default function CountryInformation(props) {
     return null;
   }
 
-  const consoleLogCountryData = () => {
+  const displayCountryData = () => {
     if (countryData) {
       console.log(`
    ___________________Country Data____________________
@@ -84,16 +84,6 @@ export default function CountryInformation(props) {
   const setCountryStates = () => {
     if (countryData) {
       setCountryLanguages(objectEntriesToArray(countryData.languages));
-      setCountryNameOffical(countryData.name.official);
-      setCountryNameCommon(countryData.name.common);
-      setCountryCapital(countryData.capital);
-      setCountryPopulation(countryData.population);
-      setCountryRegion(countryData.region);
-      setCountrySubregion(countryData.subregion);
-      setCountryFlagIcon(countryData.flag);
-      setCountryFlagSVG(countryData.flags.svg);
-      setCountryFlagAlt(countryData.flags.alt);
-      setCountryCoatOfArms(countryData.coatOfArms.svg);
     }
   };
 
@@ -114,6 +104,7 @@ export default function CountryInformation(props) {
   useEffect(() => {
     if (countryCode) {
       fetchCountryDataFromCode();
+      displayCountryData();
     }
   }, [countryCode]);
 
@@ -124,91 +115,84 @@ export default function CountryInformation(props) {
     }
   }, [countryData]);
 
-  useEffect(() => {
-    consoleLogCountryData();
-  }, [countryData]);
+  // useEffect(() => {
+  //   displayCountryData();
+  // }, [countryData]);
 
   return (
     <>
-      <Flex flexDirection='column' className='country-info'
-      mt='4'
-      >
+      <Flex flexDirection='column' className='country-info' mt='4'>
         <CountrySelection
           setCountryCode={setCountryCode}
           fetchCountryDataFromCode={fetchCountryDataFromCode}
           setCountryStates={setCountryStates}
         />
-        <div className='country-info__container'>
-          <Flex 
-            justifyContent='center'
-          >
-            <Box mt='4'>
-              <Image
-              h='200px'
-              border='4px'
-              
-                src={countryFlagSVG ? countryFlagSVG : countryFlagIcon}
-                alt={
-                  countryFlagAlt
-                    ? countryFlagAlt
-                    : `flag of ${countryNameCommon}`
-                }
-              />
-            </Box>
-            {/* <Box>
-              <Image
-                src={countryCoatOfArms ? countryCoatOfArms : countryFlagIcon}
-                alt={
-                  countryCoatOfArms
-                    ? `The ${countryNameCommon} Coat of Arms`
-                    : "No coat of arms here."
-                }
-              />
-            </Box> */}
-          </Flex>
 
-          <Flex 
-            flexDirection='column'
-            mt='4'
-            gap='2'
-            p='2'
-            
-          className='country-info__container__info__languages'>
-            {countryLanguages
-              ? countryLanguages.map((language, index) => {
-                  return (
-                    <LanguageContainer
-                      key={index}
-                      language={language}
-                      countryName={countryNameCommon}
-                      countryFlag={countryFlagSVG}
-                    />
-                  );
-                })
-              : null}
-          </Flex>
+        <Flex
+          className='country-info-flag'
+          justifyContent='center'
+          alignItems='center'
+          gap='4'>
+          <Image
+            w='300px'
+            h='200px'
+            objectFit={"contain"}
+            src={countryData.flags.svg}
+            fallbackSrc='https://via.placeholder.com/300x200'
+            alt={countryData.flags.alt || `flag of ${countryData.name.common}`}
+          />
+          <Image
+            w='100px'
+            h='200px'
+            objectFit={"contain"}
+            src={countryData.coatOfArms.svg}
+            fallbackSrc='https://via.placeholder.com/200x200'
+            alt={countryData.flags.alt || `flag of ${countryData.name.common}`}
+          />
+        </Flex>
 
-            {/* <Text>
-              <strong>Official</strong>: {countryNameOffical}
-            </Text>
+        <Flex
+          flexDirection='column'
+          mt='4'
+          gap='2'
+          p='2'
+          className='country-info-languages'>
+          {countryLanguages
+            ? countryLanguages.map((language, index) => {
+                return (
+                  <LanguageContainer
+                    key={index}
+                    language={language}
+                    countryName={countryData.name.common}
+                    countryFlag={countryData.flags.svg}
+                  />
+                );
+              })
+            : null}
+        </Flex>
 
-            <Text>
-              <strong>Common</strong>: {countryNameCommon}
-            </Text>
-            <Text>
-              <strong>Capital</strong>: {countryCapital}
-            </Text>
-            <Text>
-              <strong>Region</strong>: {countryRegion}
-            </Text>
-            <Text>
-              <strong>Sub-Region</strong>: {countrySubregion}
-            </Text>
+        <Box className='country-info-text'>
+          <Text>
+            <strong>Official</strong>: {countryData.name.official}
+          </Text>
 
-            <Text>
-              <strong>Population</strong>: {countryPopulation}
-            </Text> */}
-        </div>
+          <Text>
+            <strong>Common</strong>: {countryData.name.common}
+          </Text>
+          <Text>
+            <strong>Capital</strong>: {countryData.capital}
+          </Text>
+          <Text>
+            <strong>Region</strong>: {countryData.region}
+          </Text>
+          <Text>
+            <strong>Sub-Region</strong>: {countryData.subregion}
+          </Text>
+
+          <Text>
+            <strong>Population</strong>: {countryData.population}
+          </Text>
+        </Box>
       </Flex>
     </>
   );
