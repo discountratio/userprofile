@@ -1,45 +1,82 @@
 import { useState, useForm, useEffect } from "react";
 
 import "./App.scss";
-import UserInformation from "./components/UserProfile/UserProfile";
-import CountryInformation from "./components/CountryInformation/CountryInformation";
-import CountryModal from "./components/CountryInformation/CountryModal/CountryModal";
+import UserProfile from "./components/UserProfile/UserProfile";
 
 function App() {
   const [userData, setUserData] = useState("");
-  const [countryData, setCountryData] = useState("");
-  const [countryCode, setCountryCode] = useState("");
+  const [countryData, setCountryData] = useState({});
+  const [countryCode, setCountryCode] = useState("CA");
+  const [countryLanguages, setCountryLanguages] = useState([]);
 
-  const userLoading = () => {
-    if (!userData) {
-      return <h2>Loading...</h2>;
-    }
+  const saveCountryDataToLocalStorage = (storageData) => {
+    window.localStorage.setItem("countryData", JSON.stringify(storageData));
   };
 
-  const countryLoading = () => {
-    if (!countryData) {
-      return <h2>Loading...</h2>;
-    }
+  const getCountryDataFromLocalStorage = () => {
+    const data = JSON.parse(window.localStorage.getItem("countryData"));
+    return data;
   };
+
+  async function fetchCountryDataFromCode(code) {
+    const restCountriesURL = "https://restcountries.com/v3.1/";
+    const response = await fetch(restCountriesURL + "name/" + code);
+    const data = await response.json();
+    const fetchedData = data[0];
+    return fetchedData;
+  }
+
+  function objectEntriesToArray(object) {
+    if (object) {
+      const array = [];
+      for (const [key, value] of Object.entries(object)) {
+        array.push(value);
+      }
+      return array;
+    }
+    return null;
+  }
+
+  useEffect(() => {
+    const data = getCountryDataFromLocalStorage();
+    if (data) {
+      setCountryData(data);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (countryData) {
+      saveCountryDataToLocalStorage(countryData);
+    }
+  }, [countryData]);
+
+  useEffect(() => {
+    if (countryData) {
+      setCountryLanguages(objectEntriesToArray(countryData.languages));
+    }
+  }, [countryData]);
+
+  useEffect(() => {
+    if (countryCode) {
+      fetchCountryDataFromCode(countryCode).then((data) => {
+        setCountryData(data);
+      });
+    }
+  }, [countryCode]);
 
   return (
     <div className='App'>
-
-      <UserInformation
+      <UserProfile
         userData={userData}
         setUserData={setUserData}
         countryData={countryData}
         setCountryData={setCountryData}
         countryCode={countryCode}
         setCountryCode={setCountryCode}
+        countryLanguages={countryLanguages}
+        setCountryLanguages={setCountryLanguages}
+        objectEntriesToArray={objectEntriesToArray}
       />
-{/* 
-      <CountryModal
-        countryData={countryData}
-        setCountryData={setCountryData}
-        countryCode={countryCode}
-        setCountryCode={setCountryCode}
-      /> */}
     </div>
   );
 }

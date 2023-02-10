@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import SkillBar from "../SkillBar/SkillBar";
+import SkillBar from "./SkillBar";
 import { Heading, Link, Text, Flex, Box } from "@chakra-ui/react";
 
 export default function UserLanguages(props) {

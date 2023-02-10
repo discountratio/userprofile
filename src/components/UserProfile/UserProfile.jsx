@@ -1,5 +1,4 @@
 import React from "react";
-import { useState, useEffect, useRef } from "react";
 import {
   Heading,
   Link,
@@ -8,26 +7,13 @@ import {
   Box,
   Image,
   Button,
-  AspectRatio,
-  Icon,
 } from "@chakra-ui/react";
-import { MdSettings } from "react-icons/md";
-import {
-  AddIcon,
-  AtSignIcon,
-  DeleteIcon,
-  InfoOutlineIcon,
-  PhoneIcon,
-  SunIcon,
-} from "@chakra-ui/icons";
-import CountryModal from "../CountryInformation/CountryModal/CountryModal";
+import { DeleteIcon } from "@chakra-ui/icons";
+import CountryModal from "../CountryModal/CountryModal";
+import RemoveItemModal from "../CountryModal/RemoveItemModal";
 import UserLanguages from "./UserLanguages/UserLanguages";
-import { transform } from "framer-motion";
 
 export default function UserInformation(props) {
-  const userLanguages = props.UserLanguages;
-  const userProfile = props.userProfile;
-
   return (
     <Flex
       flexDirection='column'
@@ -148,21 +134,17 @@ export default function UserInformation(props) {
       </Flex>
 
       <Flex justifyContent='space-between' fontSize='2xl'>
-        <Heading as='h2'>
-          My Languages
-        </Heading>
+        <Heading as='h2'>My Languages</Heading>
         <Box>
+          <CountryModal
+            countryData={props.countryData}
+            setCountryCode={props.setCountryCode}
+            countryLanguages={props.countryLanguages}
+          />
 
-        <CountryModal
-        countryData={props.countryData}
-        setCountryData={props.setCountryData}
-        countryCode={props.countryCode}
-        setCountryCode={props.setCountryCode}
-      />
+          <RemoveItemModal />
 
-      
-
-        <DeleteIcon />
+          <DeleteIcon />
         </Box>
       </Flex>
       <UserLanguages />
