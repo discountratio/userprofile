@@ -6,8 +6,7 @@ const user = {
   github: "github.com/discountratio/",
   country: "Netherlands",
   flag: "https://flagicons.lipis.dev/flags/4x3/nl.svg",
-  description:
-    `The only thing I love learning more than languages is coding with React, Chakra UI, and building websites with Vite! Currently languages are stored in localStorage, and there is only the user displayed to you. Further developement would include: Storing user data in a database, user creation form, user authentication, multiple users, and user chat functionality.
+  description: `The only thing I love learning more than languages is coding with React, Chakra UI, and building websites with Vite! Currently languages are stored in localStorage, and there is only the user displayed to you. Further developement would include: Storing user data in a database, user creation form, user authentication, multiple users, and user chat functionality.
     `,
 };
 
