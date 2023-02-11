@@ -26,7 +26,6 @@ function App() {
     const fetchedData = data[0];
     return fetchedData;
   }
-
   function objectEntriesToArray(object) {
     if (object) {
       const array = [];
