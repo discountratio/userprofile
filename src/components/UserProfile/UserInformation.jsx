@@ -39,7 +39,7 @@ export default function UserInformation(props) {
               objectFit='cover'
               objectPosition={{ base: "top", md: "top" }}
               border='16px solid white'
-              src='/src/assets/images/user.jpg'
+              src={`${user.photo}`}
               alt='user headshot'
               style={{ aspectRatio: "1/1" }}
             />
