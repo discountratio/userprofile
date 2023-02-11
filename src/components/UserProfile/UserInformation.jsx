@@ -8,6 +8,7 @@ import {
   Image,
   Button,
 } from "@chakra-ui/react";
+import user from "./UserJSON";
 
 export default function UserInformation(props) {
   return (
@@ -49,7 +50,7 @@ export default function UserInformation(props) {
               bottom='2'
               right='0'
               boxShadow='0px -0px 12px 2px #333'
-              src='/src/assets/images/dutch.png'
+              src={`${user.flag}`}
               alt='flaaag'
             />
           </Box>
@@ -68,11 +69,11 @@ export default function UserInformation(props) {
               w='100%'
               minW='200px'>
               <Text className='user-name' fontSize='xl' fontWeight='bold'>
-                Firstly Lastnamed
+                {user.name}
               </Text>
               <Box className='user-location' w='100%'>
                 <Text fontSize='lg' color='gray.500'>
-                  Netherlands
+                  {user.country}
                 </Text>
               </Box>
             </Box>
@@ -89,7 +90,7 @@ export default function UserInformation(props) {
                 h='40px'
                 margin='auto'
                 _hover={{ bg: "blue.400", color: "white" }}>
-                <a href='mailTo:discountratio@gmail.com' target='_blank'>
+                <a href={`mailTo:${user.email}`} target='_blank'>
                   Email
                 </a>
               </Button>
@@ -106,7 +107,7 @@ export default function UserInformation(props) {
                 margin='auto'
                 _hover={{ bg: "blue.400", color: "white" }}>
                 <Link
-                  href='https://www.github.com/discountratio'
+                  href={`${user.github}`}
                   target='_blank'
                   isExternal>
                   GitHub
@@ -117,13 +118,7 @@ export default function UserInformation(props) {
 
           <Box className='user-description-container' w='100%' pt='8'>
             <Text fontSize='md'>
-              UserDescription Lorem ipsum dolor sit amet consectetur adipisicing
-              elit. Ducimus facere nesciunt quod eaque qui dolorum debitis illum
-              quis atque itaque suscipit, mollitia cum nisi iusto architecto
-              esse fuga ad saepe asperiores nam a voluptates fugiat
-              voluptatibus. Tempora quisquam perspiciatis rerum minima sapiente
-              nisi placeat distinctio! Sapiente culpa aliquid reprehenderit
-              dignissimos!
+            {user.descrpition}
             </Text>
           </Box>
         </Flex>
