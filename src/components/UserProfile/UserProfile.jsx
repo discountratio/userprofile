@@ -4,7 +4,6 @@ import CountryModal from "../CountryModal/CountryModal";
 import RemoveItemModal from "../CountryModal/RemoveItemModal";
 import UserLanguages from "./UserLanguages/UserLanguages";
 import UserInformation from "./UserInformation";
-
 export default function UserProfile(props) {
   return (
     <Flex

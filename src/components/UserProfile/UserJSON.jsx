@@ -1,8 +1,8 @@
 const user = {
-  name: "Firstly Lastnamed",
+  name: "Larry L. Lastname",
   email: "discountratio@gmail.com",
   photo:
-    "https://images.unsplash.com/photo-1540569014015-19a7be504e3a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80",
+   'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80',
   github: "github.com/discountratio/",
   country: "Netherlands",
   flag: "https://flagicons.lipis.dev/flags/4x3/nl.svg",

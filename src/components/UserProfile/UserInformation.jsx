@@ -118,7 +118,8 @@ export default function UserInformation(props) {
 
           <Box className='user-description-container' w='100%' pt='8'>
             <Text fontSize='md'>
-            {user.descrpition}
+            {user.description}
+
             </Text>
           </Box>
         </Flex>
