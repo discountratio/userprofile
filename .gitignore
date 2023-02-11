@@ -23,3 +23,6 @@ dist-ssr
 *.sln
 *.sw?
 language-profile/
+
+# Local Netlify folder
+.netlify
