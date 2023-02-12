@@ -79,7 +79,7 @@ export default function CountryInformation(props) {
                     countryName={countryData.name.common}
                     countryFlag={countryData.flags.svg}
                     buttonType={buttonType}
-                    setRefreshLanguages={props.setRefreshLanguages}
+                    setRefreshLanguages ={props.setRefreshLanguages }
                   />
                 );
               })

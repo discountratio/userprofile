@@ -5,12 +5,7 @@ import { Heading, Link, Text, Flex, Box } from "@chakra-ui/react";
 export default function UserLanguages(props) {
   const [languageData, setLanguageData] = useState([]);
 
-  const UserLanguages = props.UserLanguages;
-  const setUserLanguages = props.setUserLanguages;
   const refreshLanguages = props.refreshLanguages;
-  const setRefreshLanguages = props.setRefreshLanguages;
-  const languageAdded = props.languageAdded;
-  const setLanguageAdded = props.setLanguageAdded;
 
   const renderLanguageData = () => {
     if (languageData) {

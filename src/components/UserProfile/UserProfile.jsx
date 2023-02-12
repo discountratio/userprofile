@@ -1,9 +1,9 @@
 import React from "react";
 import { Heading, Flex, Box } from "@chakra-ui/react";
 import CountryModal from "../CountryModal/CountryModal";
-import RemoveItemModal from "../CountryModal/RemoveItemModal";
 import UserLanguages from "./UserLanguages/UserLanguages";
 import UserInformation from "./UserInformation";
+
 export default function UserProfile(props) {
   return (
     <Flex
@@ -38,12 +38,23 @@ export default function UserProfile(props) {
           
           >
           <CountryModal
+            text = 'Add'
+            header = 'Add a Language'
             countryData={props.countryData}
             setCountryCode={props.setCountryCode}
             countryLanguages={props.countryLanguages}
             setRefreshLanguages={props.setRefreshLanguages}
           />
-          <RemoveItemModal />
+
+<CountryModal
+            text = 'Edit'
+            header = 'Edit Languages'
+            countryData={props.countryData}
+            setCountryCode={props.setCountryCode}
+            countryLanguages={props.countryLanguages}
+            setRefreshLanguages={props.setRefreshLanguages}
+          />
+     
         </Flex>
       </Flex>
 

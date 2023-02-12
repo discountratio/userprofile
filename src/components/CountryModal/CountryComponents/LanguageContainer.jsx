@@ -6,17 +6,12 @@ import LanguageSlider from "./LanguageSlider";
 
 export default function LanguageContainer(props) {
   const language = props.language;
-
-  const [languageLevel, setLanguageLevel] = useState(1);
+  const [languageLevel, setLanguageLevel] = useState(props.level);
   const [languageCheckbox, setLanguageCheckbox] = useState(false);
   const [languageAdded, setLanguageAdded] = useState(false);
 
-  //reset on new language
-  useEffect(() => {
-    setLanguageCheckbox(false);
-    setLanguageLevel(1);
-  }, [language]);
 
+      
   //Handlers
   const handleLanguageCheckbox = (e) => {
     setLanguageCheckbox(e.target.checked);
@@ -43,10 +38,10 @@ export default function LanguageContainer(props) {
     //check if language already exists in array, if it does, update level
     const languageIndex = languageArray.findIndex(
       (language) =>
-        language.language === languageObject.language 
-        && language.country === languageObject.country
+        language.language === languageObject.language &&
+        language.country === languageObject.country
     );
-
+    console.log(languageArray[languageIndex]);
     if (languageIndex !== -1) {
       languageArray[languageIndex].level = languageObject.level;
     } else {
@@ -81,7 +76,9 @@ export default function LanguageContainer(props) {
           size='lg'
           mx='1'
         />
-        {language}
+        {props.type === "edit"
+          ? `${language}  -  ${props.countryName} `
+          : language}
       </Heading>
 
       <Flex
@@ -92,18 +89,17 @@ export default function LanguageContainer(props) {
         h='fit-content'>
         {languageCheckbox ? (
           <Flex p='4' flexDirection='row' w='100%'>
-            <LanguageSlider setLanguageLevel={setLanguageLevel} />
-
+            <LanguageSlider
+              setLanguageLevel={setLanguageLevel}
+              languageLevel={languageLevel}
+              language = {language}
+            />
             <Button
               onClick={handleAddButton}
               bg='transparent'
               color='black'
               _hover={{ bg: "green.200" }}>
-              {!languageAdded ? (
-                <Text color='black'>{props.buttonType}</Text>
-              ) : (
-                <CheckIcon boxSize='4' />
-              )}
+              <AddIcon />
             </Button>
           </Flex>
         ) : null}
