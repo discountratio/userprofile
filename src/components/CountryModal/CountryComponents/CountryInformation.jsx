@@ -41,7 +41,7 @@ export default function CountryInformation(props) {
               h: "600px",
             }}
           />
-          <Image
+          {/* <Image
             w='40px'
             h='80px'
             objectFit={"contain"}
@@ -61,7 +61,7 @@ export default function CountryInformation(props) {
               w: "600px",
               h: "auto",
             }}
-          />
+          /> */}
         </Flex>
 
         <Flex

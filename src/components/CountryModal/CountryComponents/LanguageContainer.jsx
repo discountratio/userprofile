@@ -42,7 +42,9 @@ export default function LanguageContainer(props) {
 
     //check if language already exists in array, if it does, update level
     const languageIndex = languageArray.findIndex(
-      (language) => language.language === languageObject.language
+      (language) =>
+        language.language === languageObject.language 
+        && language.country === languageObject.country
     );
 
     if (languageIndex !== -1) {
@@ -54,7 +56,6 @@ export default function LanguageContainer(props) {
     //set language array in local storage
     setLanguageAdded(true);
     props.setRefreshLanguages(true);
-    
     window.localStorage.setItem("languageArray", JSON.stringify(languageArray));
   };
 
@@ -74,7 +75,7 @@ export default function LanguageContainer(props) {
         alignContent='center'
         h='8'>
         <Checkbox
-          checked={false}
+          checked={languageCheckbox}
           onChange={handleLanguageCheckbox}
           colorScheme='green'
           size='lg'

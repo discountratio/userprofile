@@ -9,6 +9,7 @@ function App() {
   const [countryCode, setCountryCode] = useState("CA");
   const [countryLanguages, setCountryLanguages] = useState([]);
   const [refreshLanguages, setRefreshLanguages] = useState(false);
+  const [languageAdded, setLanguageAdded] = useState(false);
 
   const saveCountryDataToLocalStorage = (storageData) => {
     window.localStorage.setItem("countryData", JSON.stringify(storageData));
@@ -67,10 +68,9 @@ function App() {
   }, [countryCode]);
 
   useEffect(() => {
-    if (refreshLanguages) {
-      setCountryLanguages(objectEntriesToArray(countryData.languages));
-      setRefreshLanguages(false);
-    }
+    setCountryLanguages(objectEntriesToArray(countryData.languages));
+    setRefreshLanguages(false);
+    setLanguageAdded(false);
   }, [refreshLanguages]);
 
   return (
@@ -87,6 +87,8 @@ function App() {
         objectEntriesToArray={objectEntriesToArray}
         refreshLanguages={refreshLanguages}
         setRefreshLanguages={setRefreshLanguages}
+        languageAdded={languageAdded}
+        setLanguageAdded={setLanguageAdded}
       />
     </div>
   );

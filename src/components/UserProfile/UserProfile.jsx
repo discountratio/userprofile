@@ -48,7 +48,13 @@ export default function UserProfile(props) {
       </Flex>
 
       <UserLanguages 
-    
+        UserLanguages={props.UserLanguages}
+        setUserLanguages={props.setUserLanguages}
+        refreshLanguages={props.refreshLanguages}
+        setRefreshLanguages = {props.setRefreshLanguages}
+        languageAdded={props.languageAdded}
+        setLanguageAdded={props.setLanguageAdded}
+        
         />
     </Flex>
   );
