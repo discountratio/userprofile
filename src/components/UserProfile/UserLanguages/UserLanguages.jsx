@@ -32,7 +32,10 @@ export default function UserLanguages(props) {
       alignItems='center'
       justifyContent='center'
       id='user-languages'
-      px={[8, 12, 16, 24]}>
+      px={[8, 12, 16, 24]}
+      pt='8'
+      pb='0'
+      >
       {renderLanguageData()}
     </Flex>
   );

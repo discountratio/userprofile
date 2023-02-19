@@ -15,8 +15,9 @@ export default function CountrySelection(props) {
       px='2'
       mb='4'
       color='black'
-      border='1px'
-      borderColor='gray.600'
+      border='2px'
+      borderColor='gray.400'
+
       
       onChange={handleCountryChange}>
       <option value=''>Select a country</option>

@@ -67,8 +67,8 @@ export default function LanguageSlider(props) {
           ? languageLevels[1]
           : languageLevels[props.languageLevel / 20]
 
-
-      }</Text>
+      }
+      </Text>
     </Flex>
   );
 }

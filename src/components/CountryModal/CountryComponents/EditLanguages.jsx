@@ -29,7 +29,6 @@ function EditLanguages(props) {
 
   return (
     <div>
-      EditLanguages
       {renderLanguages(languageArray)}
     </div>
   );

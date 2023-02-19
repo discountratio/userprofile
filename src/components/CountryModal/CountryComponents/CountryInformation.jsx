@@ -31,15 +31,7 @@ export default function CountryInformation(props) {
             _hover={{
               transform: "scale(1.1)",
             }}
-            _active={{
-              zIndex: 100,
-              position: "fixed",
-              top: "50%",
-              left: "50%",
-              transform: "translate(-50%, -50%)",
-              w: "auto",
-              h: "600px",
-            }}
+  
           />
           {/* <Image
             w='40px'

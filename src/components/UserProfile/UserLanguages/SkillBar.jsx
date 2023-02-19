@@ -17,32 +17,37 @@ export default function SkillBar(props) {
   const country = props.country;
   const flag = props.flag;
 
+  const languageLevels = {
+    1: "Beginner",
+    2: "Working",
+    3: "Professional",
+    4: "Fluent",
+    5: "Native",
+  };
+
   return (
     <Flex
       flexDirection='column'
-      alignItems='center'
+      alignItems='left'
       color='gray.800'
-      bg='gray.200'
+      bg='gray.100'
+
       border='2px'
       borderColor='gray.200'
       p='4'
-      h='300px'
-      w='240px'
+      h='240px'
+      w='200px'
       m='4'
       position='relative'
       top='4px'
       left='4px'
       boxShadow='2px 2px 4px 0px #444'
       transition='box-shadow 200ms ease-in-out, top 200ms ease-in-out, left 200ms ease-in-out'
-      
-    _hover={{
-      top:'-4px',
-      left:'-4px',
-      boxShadow: "12px 12px 8px 0px #444",
-    }}
-
-
-
+      _hover={{
+        top: "-4px",
+        left: "-4px",
+        boxShadow: "12px 12px 8px 0px #444",
+      }}
       className='skill-container'>
       <Box className='skill-flag-container' boxShadow='lg' w='auto'>
         <img
@@ -57,30 +62,35 @@ export default function SkillBar(props) {
         />
       </Box>
 
-      <Heading as='h4' size='sm' className='skill-name'>
+      <Heading as='h4' size='sm' py='1' className='skill-name'>
         {language}
       </Heading>
-      <Text size='sm'>{country}</Text>
+      <Text size='sm'> 
+       
+      { level ? languageLevels[level / 20] :
+        "Beginner"
+       }
+       
+       </Text>
       <Flex
+        flexDirection='column'
         w='100%'
         h='100%'
         alignItems='center'
         gap='2'
         p='2'
-  
         className='skill-bar-container'>
-        {level}%
         <Progress
           className='skill-bar'
           height='20px'
           width='100%'
-          bg='gray.100'
-          colorScheme='blue'
+          bg='gray.400'
+          colorScheme={level > 80 ? "green" : "blue"}
           borderRadius='20'
           boxShadow='xl'
-        
-
+          min={1}
           value={level}></Progress>
+        {/* {languageLevels[level / 20]} */}
       </Flex>
     </Flex>
   );

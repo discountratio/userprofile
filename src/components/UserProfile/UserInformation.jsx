@@ -90,9 +90,12 @@ export default function UserInformation(props) {
                 h='40px'
                 margin='auto'
                 _hover={{ bg: "blue.400", color: "white" }}>
-                <a href={`mailTo:${user.email}`} target='_blank'>
+                <Link href={`mailTo:${user.email}`} target='_blank'
+                textDecoration='none'
+                style={{ textDecoration: 'none' }}
+                  >
                   Email
-                </a>
+                </Link>
               </Button>
 
               <Button
@@ -109,7 +112,9 @@ export default function UserInformation(props) {
                 <Link
                   href={`${user.github}`}
                   target='_blank'
-                  isExternal>
+                  isExternal
+                  style={{ textDecoration: 'none' }}
+                  >
                   GitHub
                 </Link>
               </Button>

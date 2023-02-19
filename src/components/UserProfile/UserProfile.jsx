@@ -10,6 +10,7 @@ export default function UserProfile(props) {
       className='user-profile-ccontainer'
       flexDirection='column'
       px={[8, 12, 24, 32]}
+      pb='200'
       w='full'
       h='auto'
       _after={{
@@ -24,49 +25,58 @@ export default function UserProfile(props) {
       <UserInformation />
       <Flex
         className='user-modal-heading'
-        justifyContent='space-between'
+        gap='4'
         fontSize='2xl'
         alignItems='center'
+        justifyContent='space-between'
+        boxShadow='lg'
         px={[8, 12, 24, 32]}
+        // bgColor='green.400'
         >
-        <Heading as='h2' fontSize='2xl'>My Languages</Heading>
-        <Flex
+        <Heading as='h2' fontSize='2xl'>
+          My Languages
+        </Heading>
+        <Box
           className='modal-container'
-          flexDirection={["column", "column", "row"]}
-          alignItems='center'
-          justifyContent='center'
-          
-          >
+          display='flex'
+          flexDirection='row'
+          gap='16px'
+          justifyContent='flex-start'>
           <CountryModal
-            text = 'Add'
-            header = 'Add a Language'
+            text='Add'
+            header='Add a Language'
+            _hover={{ bg: "transparent",
+            color: "blue.500"
+           }}
             countryData={props.countryData}
             setCountryCode={props.setCountryCode}
             countryLanguages={props.countryLanguages}
             setRefreshLanguages={props.setRefreshLanguages}
           />
 
-<CountryModal
-            text = 'Edit'
-            header = 'Edit Languages'
+          <CountryModal
+            text='Edit'
+            header='Edit Languages'
+            _hover={{ bg: "transparent",
+            color: "blue.500"
+           }}
             countryData={props.countryData}
             setCountryCode={props.setCountryCode}
             countryLanguages={props.countryLanguages}
             setRefreshLanguages={props.setRefreshLanguages}
           />
-     
-        </Flex>
+        </Box>
       </Flex>
 
-      <UserLanguages 
+      <UserLanguages
+   
         UserLanguages={props.UserLanguages}
         setUserLanguages={props.setUserLanguages}
         refreshLanguages={props.refreshLanguages}
-        setRefreshLanguages = {props.setRefreshLanguages}
+        setRefreshLanguages={props.setRefreshLanguages}
         languageAdded={props.languageAdded}
         setLanguageAdded={props.setLanguageAdded}
-        
-        />
+      />
     </Flex>
   );
 }

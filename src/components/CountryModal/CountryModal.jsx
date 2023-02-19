@@ -29,12 +29,14 @@ export default function CountryModal(props) {
       {/* Modal Button */}
       <Button
         onClick={onOpen}
-        bg='green.300'
+        bg='transparent'
         color='gray.800'
         size='xl'
-        fontSize='xl'
+        fontSize='2xl'
+        fontWeight='bold'
         h='12'
         w='20'
+        
         _hover={{ bg: "green.200", color: "orange.500" }}
         _active={{ bg: "gray.200" }}>
         {props.text}
@@ -42,11 +44,18 @@ export default function CountryModal(props) {
 
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
-        <ModalContent>
+        <ModalContent
+        borderRadius='32'
+        >
           <ModalHeader>{props.header}</ModalHeader>
           <ModalCloseButton />
-          <Box w='100%' h='1px' bg='gray.600' border='none'></Box>
-          <ModalBody>
+          <Box w='100%' h='1px' bg='gray.600' border='none'></Box> 
+          <ModalBody
+            display='flex'
+            flexDirection='column'
+            justifyContent='center'
+            h='auto'
+          >
             {props.text === "Add" ? (
               <CountryInformation
                 countryData={props.countryData}
@@ -66,7 +75,15 @@ export default function CountryModal(props) {
 
           </ModalBody>
           <ModalFooter>
-            <Button colorScheme='blue' mr={3} onClick={onClose}>
+            <Button 
+            colorScheme='blue' 
+            mr={3}
+            bgColor='blue.400'
+            borderRadius='full' 
+            px='8'
+            py='4'
+            onClick={onClose}
+            >
               Close
             </Button>
           </ModalFooter>
