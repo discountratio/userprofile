@@ -1,26 +1,20 @@
+import React, { useState } from "react";
 import {
   AddIcon,
   CheckIcon,
-  DeleteIcon,
   CloseIcon,
   EditIcon,
 } from "@chakra-ui/icons";
-import { Flex, Button, Heading } from "@chakra-ui/react";
-import React, { useState, useEffect } from "react";
-import { Checkbox, CheckboxGroup, Box, Text } from "@chakra-ui/react";
+import { Flex, Button,Checkbox, Box,   } from "@chakra-ui/react";
 import LanguageSlider from "./LanguageSlider";
-import {
-  AlertDialog,
-  AlertDialogBody,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogContent,
-  AlertDialogOverlay,
-} from "@chakra-ui/react";
 
+/*
+  LanguageContainer renders a language and a slider to select the level of the language.
+  The add version allows for adding a language to local storage.
+  The edit version allows for CRUD operations on the language.
+*/
 export default function LanguageContainer(props) {
   const language = props.language;
-  const setRefreshLanguages = props.setRefreshLanguages;
   const [languageLevel, setLanguageLevel] = useState(props.level);
   const [languageCheckbox, setLanguageCheckbox] = useState(false);
   const [languageAdded, setLanguageAdded] = useState(false);

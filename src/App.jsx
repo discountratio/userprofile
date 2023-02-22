@@ -1,9 +1,11 @@
 import { useState, useForm, useEffect } from "react";
 
 import "./App.scss";
+import LoginModal from "./components/LoginModal/LoginModal";                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
 import UserProfile from "./components/UserProfile/UserProfile";
 
 function App() {
+  const [userLogin, setUserLogin] = useState(false);
   const [userData, setUserData] = useState("");
   const [countryData, setCountryData] = useState({});
   const [countryCode, setCountryCode] = useState("CA");
@@ -27,6 +29,7 @@ function App() {
     const fetchedData = data[0];
     return fetchedData;
   }
+
   function objectEntriesToArray(object) {
     if (object) {
       const array = [];
@@ -49,13 +52,8 @@ function App() {
 
   useEffect(() => {
     if (countryData) {
-      saveCountryDataToLocalStorage(countryData);
-    }
-  }, [countryData]);
-
-  useEffect(() => {
-    if (countryData) {
       setCountryLanguages(objectEntriesToArray(countryData.languages));
+      saveCountryDataToLocalStorage(countryData);
     }
   }, [countryData]);
 
@@ -75,21 +73,25 @@ function App() {
 
   return (
     <div className='App'>
-      <UserProfile
-        userData={userData}
-        setUserData={setUserData}
-        countryData={countryData}
-        setCountryData={setCountryData}
-        countryCode={countryCode}
-        setCountryCode={setCountryCode}
-        countryLanguages={countryLanguages}
-        setCountryLanguages={setCountryLanguages}
-        objectEntriesToArray={objectEntriesToArray}
-        refreshLanguages={refreshLanguages}
-        setRefreshLanguages={setRefreshLanguages}
-        languageAdded={languageAdded}
-        setLanguageAdded={setLanguageAdded}
-      />
+      {!userLogin ? (
+        <LoginModal setUserLogin={setUserLogin} />
+      ) : (
+        <UserProfile
+          userData={userData}
+          setUserData={setUserData}
+          countryData={countryData}
+          setCountryData={setCountryData}
+          countryCode={countryCode}
+          setCountryCode={setCountryCode}
+          countryLanguages={countryLanguages}
+          setCountryLanguages={setCountryLanguages}
+          objectEntriesToArray={objectEntriesToArray}
+          refreshLanguages={refreshLanguages}
+          setRefreshLanguages={setRefreshLanguages}
+          languageAdded={languageAdded}
+          setLanguageAdded={setLanguageAdded}
+        />
+      )}
     </div>
   );
 }

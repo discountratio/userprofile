@@ -6,6 +6,8 @@ export default function UserLanguages(props) {
   const [languageData, setLanguageData] = useState([]);
 
   const refreshLanguages = props.refreshLanguages;
+  const setRefreshLanguages = props.setRefreshLanguages;
+  const setLanguageAdded = props.setLanguageAdded;
 
   const renderLanguageData = () => {
     if (languageData) {
@@ -23,7 +25,7 @@ export default function UserLanguages(props) {
 
   useEffect(() => {
     setLanguageData(JSON.parse(window.localStorage.getItem("languageArray")));
-    props.setLanguageAdded(true);
+    setLanguageAdded(true);
   }, [refreshLanguages]);
 
   return (
@@ -34,8 +36,7 @@ export default function UserLanguages(props) {
       id='user-languages'
       px={[8, 12, 16, 24]}
       pt='8'
-      pb='0'
-      >
+      pb='0'>
       {renderLanguageData()}
     </Flex>
   );

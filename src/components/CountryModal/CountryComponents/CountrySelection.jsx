@@ -1,5 +1,5 @@
 import React from "react";
-import countries from "../country-codes";
+import countries from "/src/assets/data/country-codes"
 import { Select } from "@chakra-ui/react";
 
 export default function CountrySelection(props) {

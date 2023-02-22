@@ -31,7 +31,6 @@ export default function UserProfile(props) {
         justifyContent='space-between'
         boxShadow='lg'
         px={[8, 12, 24, 32]}
-        // bgColor='green.400'
       >
         <Heading as='h2' fontSize='2xl'>
           My Languages
@@ -45,7 +44,6 @@ export default function UserProfile(props) {
           <CountryModal
             text='Add'
             header='Add a Language'
-          
             countryData={props.countryData}
             setCountryCode={props.setCountryCode}
             countryLanguages={props.countryLanguages}
@@ -55,7 +53,6 @@ export default function UserProfile(props) {
           <CountryModal
             text='Edit'
             header='Edit Languages'
-         
             countryData={props.countryData}
             setCountryCode={props.setCountryCode}
             countryLanguages={props.countryLanguages}
