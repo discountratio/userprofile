@@ -29,16 +29,13 @@ export default function CountryModal(props) {
       {/* Modal Button */}
       <Button
         onClick={onOpen}
-        bg='transparent'
         color='gray.800'
-        size='xl'
-        fontSize='2xl'
+        fontSize='xl'
         fontWeight='bold'
-        h='12'
-        w='20'
+        borderRadius='full'
+      outline='blue.300'
         
-        _hover={{ bg: "green.200", color: "orange.500" }}
-        _active={{ bg: "gray.200" }}>
+        >
         {props.text}
       </Button>
 

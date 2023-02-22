@@ -110,7 +110,7 @@ export default function UserInformation(props) {
                 margin='auto'
                 _hover={{ bg: "blue.400", color: "white" }}>
                 <Link
-                  href={`${user.github}`}
+                  href={`https://${user.github}`}
                   target='_blank'
                   isExternal
                   style={{ textDecoration: 'none' }}
