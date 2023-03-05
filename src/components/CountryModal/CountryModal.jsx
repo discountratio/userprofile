@@ -28,7 +28,9 @@ export default function CountryModal(props) {
       {/* Modal Button */}
       <Button
         onClick={onOpen}
-        color='gray.800'
+        color='gray.100'
+        bg='blue.300'
+        px='8'
         fontSize='xl'
         fontWeight='bold'
         borderRadius='full'

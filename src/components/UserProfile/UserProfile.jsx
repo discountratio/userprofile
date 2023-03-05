@@ -29,7 +29,6 @@ export default function UserProfile(props) {
         fontSize='2xl'
         alignItems='center'
         justifyContent='space-between'
-        boxShadow='lg'
         px={[8, 12, 24, 32]}
       >
         <Heading as='h2' fontSize='2xl'>

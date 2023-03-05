@@ -5,7 +5,7 @@ import LoginModal from "./components/LoginModal/LoginModal";
 import UserProfile from "./components/UserProfile/UserProfile";
 
 function App() {
-  const [userLogin, setUserLogin] = useState(false);
+  const [userIsLoggedIn, setUserIsLoggedIn] = useState(false);
   const [userData, setUserData] = useState("");
   const [countryData, setCountryData] = useState({});
   const [countryCode, setCountryCode] = useState("CA");
@@ -73,8 +73,12 @@ function App() {
 
   return (
     <div className='App'>
-      {!userLogin ? (
-        <LoginModal setUserLogin={setUserLogin} />
+      {!userIsLoggedIn ? (
+        <LoginModal 
+        setUserIsLoggedIn={setUserIsLoggedIn} 
+        userData={userData}
+        setUserData={setUserData}
+          />
       ) : (
         <UserProfile
           userData={userData}

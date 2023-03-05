@@ -24,129 +24,138 @@ import React from "react";
 
 import { useForm } from "react-hook-form";
 
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 
 function LoginModal(props) {
-  const setUserLogin = props.setUserLogin;
+  const setUserIsLoggedIn = props.setUserIsLoggedIn;
 
   const [currentModal, setCurrentModal] = React.useState("welcome");
-  const [refreshScreen, setRefreshScreen] = React.useState(false);
-  useEffect(() => {}, [refreshScreen]);
 
   const handleLogin = () => {
     setCurrentModal("login");
   };
 
-  const form = useForm({
-    defaultValues: {
-      username: "",
-      password: "",
-    },
-    errors: {},
-    
-  });
-
-  const formValidation = {
-    username: {
-      required: {
-        value: true,
-        message: "Username is required",
-      },
-    },
-    password: {
-      required: {
-        value: true,
-        message: "Password is required",
-      },
-    },
-    confirmPassword: {
-      required: {
-        value: true,
-        message: "Confirm Password is required",
-      },
-    },
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    console.log(name, value);
   };
 
   return (
     <>
       <Modal isOpen={true}>
         <ModalHeader>current: {currentModal}</ModalHeader>
+        <ModalContent>
+          <Button onClick={() => setCurrentModal("welcome")}>Welcome</Button>
+          <Button onClick={() => setCurrentModal("login")}>login</Button>
+          <Button onClick={() => setCurrentModal("signup")}>signup</Button>
+          <Button onClick={() => setCurrentModal("adduserinfo")}>
+            adduserinfo
+          </Button>
 
-        {currentModal === "welcome" ? (
-          <ModalContent bg='gray.100' p='4' color='blue.300' fontWeight='bold'>
-            <Text>
-              Welcome to Lingo - a social netword for language learners.{" "}
-            </Text>
-            <Text> Please login or signup to continue. </Text>
-            <Button
-              borderRadius='full'
-              color='gray.100'
-              bg='blue.400'
-              m='1'
-              w='32'
-              onClick={() => setCurrentModal("login")}>
-              Login
-            </Button>
-            <Button
-              borderRadius='full'
-              color='gray.100'
-              bg='blue.400'
-              m='1'
-              w='32                                                                                                                                                                                                                                                                                                                                                                                                                                   '
-              onClick={() => setCurrentModal("signup")}>
-              Sign Up
-            </Button>
-          </ModalContent>
-        ) : null}
+          {currentModal === "welcome" && (
+            <ModalBody>
+              <Heading>Welcome to Language Exchange!</Heading>
+              <Text>
+                Language Exchange is a place to connect with people from around
+                the world to practice your language skills.
+              </Text>
 
-        {currentModal === "login" ? (
-          <ModalContent>
-            <Heading as='h2'>LOGIN SCREEN</Heading>
-            <form onSubmit={form.handleSubmit((data) => console.log(data))}>
-              <FormControl id='username' isRequired>
-                <FormLabel>Username</FormLabel>
-                <Input
-                  type='text'
-                  placeholder='Username'
-                  {...form.register("username", formValidation.username)}
-                />
-                <FormHelperText>{form.errors.username?.message}</FormHelperText>
-              </FormControl>
-              <FormControl id='password' isRequired>
-                <FormLabel>Password</FormLabel>
-                <Input
-                  type='password'
-                  placeholder='Password'
-                  {...form.register("password", formValidation.password)}
-                />
-                <FormHelperText>{form.errors.password?.message}</FormHelperText>
-              </FormControl>
-              <Button type='submit'>Login</Button>
-            </form>
-          </ModalContent>
-        ) : null}
+              <Button onClick={handleLogin}>Login</Button>
+              <Button onClick={() => setCurrentModal("signup")}>signup</Button>
 
-        {currentModal === "signup" ? (
-          <ModalContent>
-            <Heading as='h2'>LOGIN SCREEN</Heading>
-            <input type='text' placeholder='Username' />
-            <input type='password' placeholder='Password' />
-            <input type='password' placeholder='Confirm Password' />
-            <button onClick={() => setUserLogin(true)}>Signup</button>
-          </ModalContent>
-        ) : null}
+            </ModalBody>
+          )}
 
-        {currentModal === "addUserInfo" ? (
-          <ModalContent>
-            <Heading as='h2'>LOGIN SCREEN</Heading>
-            <input type='text' placeholder='Username' />
-            <input type='text' placeholder='Image Location' />
-            <input type='text' placeholder='About' />
-            <input type='text' placeholder='Country' />
-            <input type='password' placeholder='Password' />
-            <button onClick={() => setUserLogin(true)}>Signup</button>
-          </ModalContent>
-        ) : null}
+          {currentModal === "login" && (
+            <ModalBody bg='green.200'>
+              <Heading>Login</Heading>
+              <Text>
+                Login to your account to start connecting with people from
+                around the world.
+              </Text>
+
+              <Button onClick={() => setCurrentModal("welcome")}>Back</Button>
+              <Input
+                placeholder='Email'
+                type='email'
+                name='email'
+                onChange={handleInputChange}></Input>
+
+              <Input
+                placeholder='Password'
+                type='password'
+                name='password'
+                onChange={handleInputChange}></Input>
+
+              <Button onClick={() => setCurrentModal("welcome")}>Login</Button>
+            </ModalBody>
+          )}
+
+          {currentModal === "signup" && (
+            <ModalBody bg='blue.200'>
+              <Heading>Signup</Heading>
+              <Text>
+                Signup for a new account to start connecting with people from
+                around the world.
+              </Text>
+              <Input
+                placeholder='Email'
+                type='email'
+                name='email'
+                onChange={handleInputChange}></Input>
+              <Input
+                placeholder='Password'
+                type='password'
+                name='password'
+                onChange={handleInputChange}></Input>
+              <Input
+                placeholder='Confirm Password'
+                type='password'
+                name='password'
+                onChange={handleInputChange}></Input>
+              <Button onClick={() => setCurrentModal("welcome")}>Back</Button>
+              <Button onClick={() => setCurrentModal("adduserinfo")}>
+confirm              </Button>
+            </ModalBody>
+          )}
+
+          {currentModal === "adduserinfo" && (
+            <ModalBody bg='yellow.200'>
+              <Heading>Add User Info</Heading>
+              <Text>
+                Signup for a new account to start connecting with people from
+                around the world.
+              </Text>
+              <Input
+                placeholder='First Name'
+                type='text'
+                name='firstName'
+                onChange={handleInputChange}></Input>
+              <Input
+                placeholder='Last Name'
+                type='text'
+                name='lastName'
+                onChange={handleInputChange}></Input>
+              <Input
+                placeholder='Country'
+                type='text'
+                name='country'
+                onChange={handleInputChange}></Input>
+              <Input
+                placeholder='Native Language'
+                type='text'
+                name='nativeLanguage'
+                onChange={handleInputChange}></Input>
+              <Input
+                placeholder='Learning Language'
+                type='text'
+                name='learningLanguage'
+                onChange={handleInputChange}></Input>
+              <Button onClick={() => setCurrentModal("welcome")}>Back</Button>
+              <Button onClick={() => setUserIsLoggedIn(true)}>confirm</Button>
+            </ModalBody>
+          )}
+        </ModalContent>
       </Modal>
     </>
   );
