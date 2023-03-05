@@ -1,7 +1,7 @@
 import { useState, useForm, useEffect } from "react";
 
 import "./App.scss";
-import LoginModal from "./components/LoginModal/LoginModal";                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+import LoginModal from "./components/LoginModal/LoginModal";
 import UserProfile from "./components/UserProfile/UserProfile";
 
 function App() {
@@ -73,29 +73,31 @@ function App() {
 
   return (
     <div className='App'>
-      {!userIsLoggedIn ? (
+      {/* {!userIsLoggedIn ? (
         <LoginModal 
         setUserIsLoggedIn={setUserIsLoggedIn} 
         userData={userData}
         setUserData={setUserData}
           />
-      ) : (
-        <UserProfile
-          userData={userData}
-          setUserData={setUserData}
-          countryData={countryData}
-          setCountryData={setCountryData}
-          countryCode={countryCode}
-          setCountryCode={setCountryCode}
-          countryLanguages={countryLanguages}
-          setCountryLanguages={setCountryLanguages}
-          objectEntriesToArray={objectEntriesToArray}
-          refreshLanguages={refreshLanguages}
-          setRefreshLanguages={setRefreshLanguages}
-          languageAdded={languageAdded}
-          setLanguageAdded={setLanguageAdded}
-        />
-      )}
+      ) : ( */}
+
+      <UserProfile
+        userData={userData}
+        setUserData={setUserData}
+        countryData={countryData}
+        setCountryData={setCountryData}
+        countryCode={countryCode}
+        setCountryCode={setCountryCode}
+        countryLanguages={countryLanguages}
+        setCountryLanguages={setCountryLanguages}
+        objectEntriesToArray={objectEntriesToArray}
+        refreshLanguages={refreshLanguages}
+        setRefreshLanguages={setRefreshLanguages}
+        languageAdded={languageAdded}
+        setLanguageAdded={setLanguageAdded}
+      />
+
+      {/* )} */}
     </div>
   );
 }
